@@ -1434,6 +1434,12 @@
                 </p>
             `;
 
+            // حفظ قراءة الطاقة الحالية في قاعدة البيانات
+            if (typeof window.saveReadingToFirestore === 'function') {
+                const cardNamesList = cards.map(c => `${c.name} (${c.isReversed ? 'معكوسة' : 'معتدلة'})`).join(' ، ');
+                window.saveReadingToFirestore("قراءة الطاقة الحالية (Now Energy)", cardNamesList, "current_energy");
+            }
+
             resultDiv.classList.remove('hidden');
             resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
@@ -1480,7 +1486,7 @@
         document.getElementById('shuffleBtn').addEventListener('click', triggerShuffleAnimation);
         document.getElementById('visualDeck').addEventListener('click', triggerShuffleAnimation);
 
-        document.getElementById('drawCardsBtn').addEventListener('click', () => {
+        document.getElementById('drawCardsBtn').addEventListener('click', async () => {
             triggerShuffleAnimation();
             const config = spreadConfigs[selectedSpread];
             const question = document.getElementById('userQuestion').value.trim() || "قراءة عامة للطاقة والمسار القادم";
@@ -1505,6 +1511,12 @@
 
             document.getElementById('synthesisBody').innerHTML = bodyHTML;
 
+            // حفظ القراءة المعمقة في قاعدة البيانات (Firebase Firestore)
+            if (typeof window.saveReadingToFirestore === 'function') {
+                const drawnCardNames = currentDrawnCards.map(c => `${c.name} (${c.isReversed ? 'معكوسة' : 'معتدلة'})`).join(' ، ');
+                await window.saveReadingToFirestore(question, drawnCardNames, selectedSpread);
+            }
+
             board.classList.remove('hidden');
             synthesisDiv.classList.remove('hidden');
 
@@ -1519,14 +1531,19 @@
             board.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
-        document.getElementById('revealAllBtn').addEventListener('click', () => {
+        document.getElementById('revealAllBtn').addEventListener('click', async () => {
             document.querySelectorAll('#cardsGrid .card-inner').forEach(el => el.classList.add('card-flipped'));
+            if (currentDrawnCards.length > 0 && typeof window.saveReadingToFirestore === 'function') {
+                const question = document.getElementById('userQuestion').value.trim() || "قراءة عامة للطاقة والمسار القادم";
+                const drawnCardNames = currentDrawnCards.map(c => `${c.name} (${c.isReversed ? 'معكوسة' : 'معتدلة'})`).join(' ، ');
+                await window.saveReadingToFirestore(question, drawnCardNames, `${selectedSpread}_revealed`);
+            }
         });
 
         // ==========================================
         // 6. PAID VIP SECTION: THREE QUESTIONS READING
         // ==========================================
-        document.getElementById('threeQuestionsForm').addEventListener('submit', (e) => {
+        document.getElementById('threeQuestionsForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const q1 = document.getElementById('q1Input').value.trim();
             const q2 = document.getElementById('q2Input').value.trim();
@@ -1558,6 +1575,13 @@
                     </p>
                 </div>
             `).join('');
+
+            // حفظ قراءة الثلاثة أسئلة في قاعدة البيانات
+            if (typeof window.saveReadingToFirestore === 'function') {
+                const combinedQ = `1) ${q1} | 2) ${q2} | 3) ${q3}`;
+                const combinedCards = cards.map(c => `${c.name} (${c.isReversed ? 'معكوسة' : 'معتدلة'})`).join(' ، ');
+                await window.saveReadingToFirestore(combinedQ, combinedCards, "three_questions");
+            }
 
             resultDiv.classList.remove('hidden');
 
@@ -1644,6 +1668,7 @@
             const soulInfo = arcanaMeanings[profile.left];
             const moneyInfo = arcanaMeanings[profile.right];
             const talentInfo = arcanaMeanings[profile.top];
+            const karmaInfo = arcanaMeanings[profile.bottom];
 
             const detailedBox = document.getElementById('arcanaDetailedBox');
             const detailedContent = document.getElementById('arcanaDetailedContent');
@@ -1651,27 +1676,47 @@
 
             detailedContent.innerHTML = `
                 <h4 class="font-serif text-2xl font-bold text-purple-950 border-b border-pink-200 pb-2">📜 التحليل المعمق لمصفوفة أركانا (${name})</h4>
+                <p class="text-xs sm:text-sm text-purple-800 leading-relaxed bg-purple-50/70 p-3.5 rounded-2xl border border-purple-100">
+                    <strong>ملخص تفاعل النجمة:</strong> تتناغم طاقة مركز قوتكِ <strong>(${profile.center})</strong> مع جوهر روحكِ <strong>(${profile.left})</strong> وموهبتكِ <strong>(${profile.top})</strong>، بينما يرشدكِ الدرس الكارمي <strong>(${profile.bottom})</strong> إلى نضج أعمق في العلاقات والقرارات.
+                </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-                    <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200">
-                        <div class="font-bold text-purple-950 mb-1">👑 مركز القوة (أركانا ${profile.center}): ${coreInfo.title}</div>
+                    <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 space-y-1.5">
+                        <div class="font-bold text-purple-950">👑 مركز القوة (أركانا ${profile.center}): ${coreInfo.title}</div>
                         <p class="text-purple-800"><strong>طاقة النور:</strong> ${coreInfo.light}</p>
-                        <p class="text-rose-700 mt-1"><strong>طاقة الظل:</strong> ${coreInfo.shadow}</p>
+                        <p class="text-rose-700"><strong>طاقة الظل:</strong> ${coreInfo.shadow}</p>
+                        <p class="text-indigo-800 text-xs"><strong>نصيحة التوازن:</strong> استثمري حضوركِ القيادي بهدوء وتجنبي استنزاف نفسكِ في إثبات الذات.</p>
                     </div>
-                    <div class="p-4 rounded-2xl bg-pink-50 border border-pink-200">
-                        <div class="font-bold text-pink-950 mb-1">🌸 جوهر الروح (أركانا ${profile.left}): ${soulInfo.title}</div>
+                    <div class="p-4 rounded-2xl bg-pink-50 border border-pink-200 space-y-1.5">
+                        <div class="font-bold text-pink-950">🌸 جوهر الروح (أركانا ${profile.left}): ${soulInfo.title}</div>
                         <p class="text-purple-800">${soulInfo.light}</p>
-                        <p class="text-pink-800 mt-1"><strong>في الحب:</strong> ${soulInfo.love}</p>
+                        <p class="text-pink-800"><strong>في الحب والعلاقات:</strong> ${soulInfo.love}</p>
+                        <p class="text-rose-700 text-xs"><strong>تحدي القلب:</strong> ${soulInfo.shadow}</p>
                     </div>
-                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200">
-                        <div class="font-bold text-amber-950 mb-1">✨ الموهبة السماوية (أركانا ${profile.top}): ${talentInfo.title}</div>
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-1.5">
+                        <div class="font-bold text-amber-950">✨ الموهبة السماوية (أركانا ${profile.top}): ${talentInfo.title}</div>
                         <p class="text-purple-800">${talentInfo.light}</p>
+                        <p class="text-amber-900 text-xs"><strong>كيف تفعلينها:</strong> اجعليها مساحة إبداعية مستمرة تمنحكِ شغفاً وتجدداً ذهنياً.</p>
                     </div>
-                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
-                        <div class="font-bold text-emerald-950 mb-1">💰 بوابة المال والوفرة (أركانا ${profile.right}): ${moneyInfo.title}</div>
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1.5">
+                        <div class="font-bold text-emerald-950">💰 بوابة المال والوفرة (أركانا ${profile.right}): ${moneyInfo.title}</div>
                         <p class="text-purple-800">${moneyInfo.money}</p>
+                        <p class="text-emerald-900 text-xs"><strong>مفتاح الجذب المادي:</strong> التنظيم الواضح والثقة بقيمة ما تقدمينه دون تردد.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-rose-50/90 border border-rose-200 md:col-span-2 space-y-1.5">
+                        <div class="font-bold text-rose-950">🔥 الدرس الكارمي ومحطة النضج (أركانا ${profile.bottom}): ${karmaInfo.title}</div>
+                        <p class="text-purple-900">${karmaInfo.light}</p>
+                        <p class="text-rose-800 text-xs"><strong>ما يختبركِ به الكون ليقوّيكِ:</strong> ${karmaInfo.shadow} — وتجاوز هذا الظل يفتح لكِ باب استقرار أعمق في الحب (${karmaInfo.love}).</p>
                     </div>
                 </div>
             `;
+
+            if (typeof window.saveReadingToFirestore === 'function') {
+                window.saveReadingToFirestore(
+                    `تحليل مصفوفة أركانا لـ ${name} (${dateStr})`,
+                    `المركز: ${profile.center} | الروح: ${profile.left} | الموهبة: ${profile.top} | المال: ${profile.right} | الكارما: ${profile.bottom}`,
+                    "arcana_matrix"
+                );
+            }
 
             detailedBox.classList.remove('hidden');
 
@@ -1687,7 +1732,7 @@
         // ==========================================
         // 8. PAID VIP SECTION: FUTURE HUSBAND READING
         // ==========================================
-        document.getElementById('futureHusbandForm').addEventListener('submit', (e) => {
+        document.getElementById('futureHusbandForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('fhName').value.trim();
             const dateStr = document.getElementById('fhBirthDate').value;
@@ -1729,6 +1774,12 @@
                     </div>
                 </div>
             `;
+
+            // حفظ قراءة زوج المستقبل في قاعدة البيانات
+            if (typeof window.saveReadingToFirestore === 'function') {
+                const fhCardsList = cards.map(c => `${c.name} (${c.isReversed ? 'معكوسة' : 'معتدلة'})`).join(' ، ');
+                await window.saveReadingToFirestore(`قراءة زوج المستقبل لـ ${name} (${dateStr})`, fhCardsList, "future_husband");
+            }
 
             resultSection.classList.remove('hidden');
 
@@ -1866,6 +1917,32 @@
                 </div>
             `).join('');
 
+            const dominantEntry = Object.entries(elementsCount).sort((a, b) => b[1] - a[1])[0];
+            const elementGuidance = {
+                "ناري 🔥": "طاقتكِ الغالبة نارية؛ تمنحكِ حماساً ومبادرة وشجاعة، ويوازنها الهدوء والإنصات قبل القرار.",
+                "ترابي 🌿": "طاقتكِ الغالبة ترابية؛ تمنحكِ ثباتاً وواقعية وقدرة على البناء، ويوازنها التجديد والمرونة العاطفية.",
+                "هوائي 🌬️": "طاقتكِ الغالبة هوائية؛ تمنحكِ سرعة بديهة وتواصلاً ووضوحاً، ويوازنها التأريض الجسدي والسكينة.",
+                "مائي 💧": "طاقتكِ الغالبة مائية؛ تمنحكِ عمقاً عاطفياً وحدساً قوياً، ويوازنها وضع حدود صحية وتنظيم الخطوات."
+            };
+
+            let deepInsightBox = document.getElementById('astroDeepInsightBox');
+            if (!deepInsightBox) {
+                deepInsightBox = document.createElement('div');
+                deepInsightBox.id = 'astroDeepInsightBox';
+                deepInsightBox.className = 'bg-purple-50/90 rounded-3xl p-5 border border-purple-200 shadow-sm space-y-2 text-right';
+                document.getElementById('astroResultsContainer').appendChild(deepInsightBox);
+            }
+
+            deepInsightBox.innerHTML = `
+                <h4 class="font-serif text-xl font-bold text-purple-950">✨ قراءة أعمق لتناغم خريطتكِ الفلكية</h4>
+                <p class="text-xs sm:text-sm text-purple-900 leading-relaxed">
+                    <strong>تناغم الشمس والقمر والطالع:</strong> تجمع خريطتكِ بين إشراقة <strong>${sunSign.name}</strong> في طموحكِ الظاهر، واحتياجات <strong>${moonSign.name}</strong> في أمانكِ العاطفي، وحضور <strong>${risingSign.name}</strong> في انطباعكِ الأول عند ولادتكِ في <strong>${city}</strong> (${timeStr}).
+                </p>
+                <p class="text-xs sm:text-sm text-purple-800 leading-relaxed bg-white/80 p-3 rounded-2xl border border-pink-100">
+                    <strong>العنصر الأبرز (${dominantEntry[0]} — ${dominantEntry[1]}%):</strong> ${elementGuidance[dominantEntry[0]] || ""}
+                </p>
+            `;
+
             document.getElementById('astroResultsContainer').classList.remove('hidden');
         });
 
@@ -1953,11 +2030,11 @@
         renderEncyclopedia();
     </script>
 
-    <!-- Cloud Session Persistence, Payment Verification Queue & Owner Settings Sync -->
+    <!-- Cloud Session Persistence, Readings Archive, Payment Verification Queue & Owner Settings Sync -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const customFirebaseConfig = {
             apiKey: "AIzaSyDmMGVyQS0LhC76-h-U-i2Bq7YJx9z3JHQ",
@@ -1981,6 +2058,30 @@
             let ownerSettings = {
                 paymentUrl: "",
                 beneficiary: "أورا وميض"
+            };
+
+            // دالة حفظ القراءات في قاعدة البيانات (Firebase Firestore)
+            window.saveReadingToFirestore = async (questionText, cardsText, readingType = "tarot") => {
+                try {
+                    if (!auth.currentUser) {
+                        await signInAnonymously(auth);
+                    }
+                    const activeUid = auth.currentUser?.uid || currentUserId;
+                    if (!activeUid) return;
+
+                    const readingPayload = {
+                        question: questionText || document.getElementById('userQuestion')?.value || "قراءة عامة",
+                        cards: cardsText,
+                        type: readingType,
+                        uid: activeUid,
+                        timestamp: serverTimestamp()
+                    };
+
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'readings'), readingPayload);
+                    console.log("تم الحفظ بنجاح!");
+                } catch (error) {
+                    console.error("خطأ في الحفظ:", error);
+                }
             };
 
             window.applyMasterCardDisplay = function() {

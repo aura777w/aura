@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أورا وميض | عالم التاروت والخرائط الفلكية ومصفوفة أركانا</title>
+    
+    <!-- Google Fonts: Amiri for mystical headings, Tajawal for clean modern Arabic UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                        serif: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        mystic: {
+                            50: '#fdf4ff',
+                            100: '#fae8ff',
+                            200: '#f5d0fe',
+                            300: '#f0abfc',
+                            400: '#e879f9',
+                            500: '#d946ef',
+                            600: '#c026d3',
+                            800: '#6b21a8',
+                            900: '#3b0764',
+                            950: '#1e0536',
+                        },
+                        rosepastel: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                        },
+                        gold: {
+                            100: '#fef9c3',
+                            200: '#fef08a',
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            light: '#f6e27f',
+                            dark: '#cb9b51',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 25s linear infinite',
+                        'twinkle': 'twinkle 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        twinkle: {
+                            '0%, 100%': { opacity: 0.2, transform: 'scale(0.8)' },
+                            '50%': { opacity: 1, transform: 'scale(1.2)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Mystical Girly Theme Styles */
+        body {
+            background: linear-gradient(135deg, #fff5f8 0%, #f8f0ff 45%, #f3e8ff 100%);
+            color: #3b0764;
+            overflow-x: hidden;
+        }
+
+        /* Gold Metallic Text Gradient */
+        .text-gold-gradient {
+            background: linear-gradient(to right, #b45309, #d97706, #b45309, #92400e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border {
+            border: 1.5px solid rgba(217, 119, 6, 0.45);
+            box-shadow: 0 4px 20px rgba(217, 70, 239, 0.08), inset 0 0 12px rgba(254, 240, 138, 0.3);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 10px 35px -5px rgba(168, 85, 247, 0.12), 0 4px 15px -2px rgba(244, 63, 94, 0.08);
+        }
+
+        .glass-card-dark {
+            background: linear-gradient(145deg, rgba(59, 7, 100, 0.92), rgba(88, 28, 135, 0.88));
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(253, 224, 71, 0.4);
+            color: #fdf4ff;
+        }
+
+        /* 3D Card Flip Mechanics */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+
+        .card-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+
+        .card-front {
+            transform: rotateY(180deg);
+        }
+
+        /* Tarot Card Back Intricate Pattern */
+        .tarot-back-pattern {
+            background: radial-gradient(circle at center, #4c1d95 0%, #2e1065 65%, #1e0536 100%);
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(253, 224, 71, 0.22) 0%, transparent 65%),
+                repeating-linear-gradient(45deg, rgba(244, 114, 182, 0.08) 0px, rgba(244, 114, 182, 0.08) 2px, transparent 2px, transparent 10px),
+                repeating-linear-gradient(-45deg, rgba(253, 224, 71, 0.08) 0px, rgba(253, 224, 71, 0.08) 2px, transparent 2px, transparent 10px);
+            border: 2px solid #eab308;
+            box-shadow: inset 0 0 15px rgba(250, 204, 21, 0.35);
+        }
+
+        /* Ornate Card Front Frame */
+        .tarot-art-frame {
+            background: linear-gradient(180deg, #fffdf9 0%, #fdf2f8 55%, #f5f3ff 100%);
+            border: 1.5px solid #d97706;
+            box-shadow: inset 0 0 12px rgba(245, 158, 11, 0.18);
+            position: relative;
+        }
+        .tarot-art-frame::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 1px solid rgba(217, 119, 6, 0.35);
+            border-radius: 0.65rem;
+            pointer-events: none;
+        }
+
+        /* VIP Locked Blur Overlay */
+        .vip-blur-preview {
+            filter: blur(5px);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Shuffle Animation */
+        @keyframes shuffleDeck {
+            0% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-35px) rotate(-8deg); }
+            50% { transform: translateX(35px) rotate(8deg); }
+            75% { transform: translateX(-20px) rotate(-4deg); }
+            100% { transform: translateX(0) rotate(0deg); }
+        }
+        .animate-shuffle {
+            animation: shuffleDeck 0.6s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdf4ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #f472b6, #c084fc);
+            border-radius: 10px;
+        }
+
+        /* Starry Canvas */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-pink-200 selection:text-purple-900 relative">
+
+    <!-- Animated Starry & Sparkle Background Canvas -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 glass-panel border-b border-pink-200/60 px-4 py-3 transition-all">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-2.5 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-400 via-purple-500 to-amber-300 p-0.5 shadow-md group-hover:rotate-12 transition-transform">
+                    <div class="w-full h-full bg-white rounded-full flex items-center justify-center text-purple-800">
+                        <svg class="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold text-gold-gradient tracking-wide">أورا وميض</span>
+                    <span class="block text-[11px] text-purple-600 font-medium -mt-1">التاروت • الفلك • مصفوفة أركانا</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden lg:flex items-center gap-1 bg-white/60 px-3 py-1.5 rounded-full border border-pink-100 shadow-inner">
+                <a href="#current-energy-section" class="px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-purple-900 hover:bg-pink-100 transition">✨ الطاقة الحالية</a>
+                <a href="#reading-section" class="px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-purple-900 hover:bg-pink-100 transition">🔮 قراءة معمقة</a>
+                <a href="#three-questions-section" class="px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-purple-900 hover:bg-pink-100 transition">❓ 3 أسئلة</a>
+                <a href="#future-husband-section" class="px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-purple-900 hover:bg-pink-100 transition">💍 زوج المستقبل</a>
+                <a href="#arcana-matrix-section" class="px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-purple-900 hover:bg-pink-100 transition">✡️ خريطة أركانا</a>
+                <a href="#astrology-section" class="px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-purple-900 hover:bg-pink-100 transition">🌙 الخريطة الفلكية</a>
+                <a href="#encyclopedia-section" class="px-3.5 py-1.5 rounded-full text-xs xl:text-sm font-bold text-purple-900 hover:bg-pink-100 transition">🃏 78 بطاقة</a>
+            </div>
+
+            <!-- VIP Status & Unlock Button -->
+            <div class="flex items-center gap-2">
+                <button id="openVipModalBtn" onclick="openVipModal()" class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-amber-500 via-pink-500 to-purple-600 text-white shadow-md hover:shadow-lg hover:scale-105 transition flex items-center gap-1.5 cursor-pointer">
+                    <span id="vipNavIcon">👑</span>
+                    <span id="vipNavText">افتحي كل الميزات (5,000 د.ع)</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl bg-pink-100/80 text-purple-800 hover:bg-pink-200 transition" aria-label="القائمة">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden mt-3 pt-3 border-t border-pink-100 grid grid-cols-2 gap-2">
+            <a href="#current-energy-section" class="px-3 py-2 rounded-xl bg-white/80 text-purple-900 font-bold text-xs">✨ الطاقة الحالية (مجاني)</a>
+            <a href="#reading-section" class="px-3 py-2 rounded-xl bg-white/80 text-purple-900 font-bold text-xs">🔮 قراءة معمقة (VIP)</a>
+            <a href="#three-questions-section" class="px-3 py-2 rounded-xl bg-white/80 text-purple-900 font-bold text-xs">❓ قراءة 3 أسئلة (VIP)</a>
+            <a href="#future-husband-section" class="px-3 py-2 rounded-xl bg-white/80 text-purple-900 font-bold text-xs">💍 زوج المستقبل (VIP)</a>
+            <a href="#arcana-matrix-section" class="px-3 py-2 rounded-xl bg-white/80 text-purple-900 font-bold text-xs">✡️ خريطة أركانا (VIP)</a>
+            <a href="#astrology-section" class="px-3 py-2 rounded-xl bg-white/80 text-purple-900 font-bold text-xs">🌙 الخريطة الفلكية (مجاني)</a>
+            <a href="#encyclopedia-section" class="px-3 py-2 rounded-xl bg-white/80 text-purple-900 font-bold text-xs">🃏 موسوعة 78 بطاقة</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pb-24">
+
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="pt-10 md:pt-14 pb-6 text-center relative">
+            <!-- Floating Mystical Art Cards -->
+            <div class="hidden xl:block absolute top-10 right-8 animate-float opacity-90">
+                <div class="w-24 h-36 rounded-2xl tarot-back-pattern shadow-xl transform rotate-12 flex items-center justify-center p-2">
+                    <svg viewBox="0 0 80 120" class="w-full h-full stroke-amber-300 fill-none">
+                        <rect x="4" y="4" width="72" height="112" rx="8" stroke-width="1.2"/>
+                        <circle cx="40" cy="60" r="22" stroke-width="1"/>
+                        <path d="M40 25 L44 56 L75 60 L44 64 L40 95 L36 64 L5 60 L36 56 Z" stroke-width="1"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="hidden xl:block absolute top-16 left-8 animate-float opacity-90" style="animation-delay: 2s;">
+                <div class="w-24 h-36 rounded-2xl tarot-back-pattern shadow-xl transform -rotate-12 flex items-center justify-center p-2">
+                    <svg viewBox="0 0 80 120" class="w-full h-full stroke-amber-300 fill-none">
+                        <rect x="4" y="4" width="72" height="112" rx="8" stroke-width="1.2"/>
+                        <path d="M46 38 A22 22 0 1 0 46 82 A16 16 0 1 1 46 38 Z" stroke-width="1.3"/>
+                        <circle cx="52" cy="60" r="3" fill="#fde047"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 border border-amber-300/80 shadow-sm mb-5">
+                <span class="text-amber-500 animate-pulse">✦</span>
+                <span class="text-xs sm:text-sm font-bold text-purple-900">ملاذكِ الروحاني الساحر • باقة شاملة لمرة واحدة بـ 5,000 د.ع</span>
+                <span class="text-amber-500 animate-pulse">✦</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-purple-950 leading-tight mb-5">
+                اكتشفي رسائل النجوم <br>
+                <span class="text-gold-gradient">وأسرار بطاقات التاروت وأركانا</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-purple-800/85 leading-relaxed mb-8 font-medium">
+                ابدئي مجاناً بقراءة طاقتكِ الحالية وخريطتكِ الفلكية، وافتحي جميع القراءات المعمقة وقراءة الثلاثة أسئلة وزوج المستقبل وخريطة أركانا المفصلة مدى الحياة مقابل <strong>5,000 دينار عراقي فقط</strong>!
+            </p>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3.5">
+                <a href="#current-energy-section" class="px-6 py-3.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold shadow-lg hover:scale-105 transition-all flex items-center gap-2">
+                    <span>✨</span>
+                    <span>قراءة الطاقة الحالية (مجاناً)</span>
+                </a>
+                <a href="#astrology-section" class="px-6 py-3.5 rounded-full glass-panel border border-purple-300 text-purple-950 font-bold hover:bg-white transition-all flex items-center gap-2">
+                    <span>🌙</span>
+                    <span>الخريطة الفلكية (مجاناً)</span>
+                </a>
+                <button onclick="openVipModal()" class="px-6 py-3.5 rounded-full bg-gradient-to-r from-amber-500 via-pink-500 to-purple-600 text-white font-bold shadow-lg shadow-pink-400/30 hover:scale-105 transition-all flex items-center gap-2 cursor-pointer">
+                    <span>👑</span>
+                    <span>افتحي باقة VIP الكاملة (5,000 د.ع)</span>
+                </button>
+            </div>
+
+            <!-- Pricing & Access Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-12 max-w-4xl mx-auto text-right">
+                <div class="glass-panel rounded-3xl p-5 border-2 border-emerald-300/70">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-serif text-xl font-bold text-purple-950">🌸 القسم المجاني للجميع</span>
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">مجاني 100%</span>
+                    </div>
+                    <ul class="text-xs sm:text-sm text-purple-800 space-y-1.5 mt-3">
+                        <li>✅ <strong>قراءة الطاقة الحالية:</strong> كشف حالتكِ الذهنية والعاطفية والروحية الآن.</li>
+                        <li>✅ <strong>الخريطة الفلكية الكاملة:</strong> الشمس، القمر، الطالع، وتوازن العناصر الأربعة.</li>
+                        <li>✅ <strong>موسوعة الـ 78 بطاقة:</strong> استعراض جميع البطاقات بالرسوم الذهبية الفنية.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card-dark rounded-3xl p-5 border-2 border-amber-400/80 shadow-xl">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-serif text-xl font-bold text-amber-300">👑 عضوية أورا VIP الشاملة</span>
+                        <span class="px-3 py-1 rounded-full bg-amber-400 text-purple-950 text-xs font-extrabold">5,000 د.ع لمرة واحدة</span>
+                    </div>
+                    <ul class="text-xs sm:text-sm text-purple-100 space-y-1.5 mt-3">
+                        <li>✨ <strong>قراءة التاروت المعمقة:</strong> مسار الزمن، قراءة الحب، والدائرة الكونية.</li>
+                        <li>❓ <strong>قراءة الثلاثة أسئلة:</strong> اطرحي 3 أسئلة محددة واحصلي على إجابة لكل سؤال.</li>
+                        <li>💍 <strong>تحليل زوج المستقبل:</strong> بطاقات تكشف شخصيته، أسلوب حبه، وتناغمه مع أركانا وفلككِ.</li>
+                        <li>✡️ <strong>تحليل خريطة أركانا المعمق:</strong> شرح شامل لجوهر الروح، النور والظل، الحب، والمال.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FREE SECTION: CURRENT ENERGY READING -->
+        <section id="current-energy-section" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border-2 border-emerald-300/70 relative overflow-hidden">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span class="text-xs font-bold tracking-wider text-emerald-800 bg-emerald-100 px-3.5 py-1 rounded-full">🎁 خدمة مجانية بالكامل</span>
+                    <span class="text-xs text-purple-600 font-medium">تحديث طاقي فوري</span>
+                </div>
+
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-purple-950 mb-3">✨ قراءة الطاقة الحالية (Now Energy)</h2>
+                    <p class="text-purple-800/80 text-sm sm:text-base">
+                        خذي نفساً عميقاً، واضغطي على الزر لسحب 3 بطاقات تكشف <strong>طاقة ذهنكِ</strong>، <strong>نبض قلبكِ العاطفي</strong>، و<strong>رسالة الكون لكِ في هذه اللحظة</strong>.
+                    </p>
+                </div>
+
+                <div class="text-center mb-8">
+                    <button id="drawCurrentEnergyBtn" class="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-purple-600 text-white font-bold shadow-lg hover:scale-105 transition-all inline-flex items-center gap-2 cursor-pointer">
+                        <span>🔮</span>
+                        <span>اقرئي طاقتي الحالية الآن</span>
+                    </button>
+                </div>
+
+                <!-- Current Energy Result Cards -->
+                <div id="currentEnergyResult" class="hidden space-y-6">
+                    <div id="currentEnergyCardsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center"></div>
+                    <div id="currentEnergySummary" class="glass-card-dark rounded-3xl p-6 text-center max-w-3xl mx-auto"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PAID VIP SECTION: DEEP TAROT READING -->
+        <section id="reading-section" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 gold-border relative overflow-hidden">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span class="vip-section-badge text-xs font-bold tracking-wider text-amber-900 bg-amber-100 border border-amber-300 px-3.5 py-1 rounded-full">👑 مشمول في باقة VIP (5,000 د.ع)</span>
+                    <span class="text-xs text-purple-700 font-bold">تحليل الروابط الخفية والمصير</span>
+                </div>
+
+                <div class="text-center max-w-3xl mx-auto mb-8 relative z-10">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-purple-950 mb-3">🔮 قراءات التاروت المعمقة التفاعلية</h2>
+                    <p class="text-purple-800/80 text-sm sm:text-base">
+                        اختاري نوع القراءة المعمقة، اكتبي نيتكِ، واخلطي البطاقات المرسومة بالذهب لاستكشاف أعمق التفاصيل في الحب والمستقبل.
+                    </p>
+                </div>
+
+                <!-- Step 1: Question & Spread Selection -->
+                <div class="max-w-3xl mx-auto space-y-5 relative z-10">
+                    <div>
+                        <label for="userQuestion" class="block text-sm font-bold text-purple-900 mb-2">✨ ما هو سؤالكِ أو النية التي تودين استشارة البطاقات حولها؟</label>
+                        <input type="text" id="userQuestion" placeholder="مثال: ما هي طاقة علاقتي العاطفية القادمة؟ أو كيف أتجاوز التحدي الحالي؟" 
+                            class="w-full px-5 py-3.5 rounded-2xl bg-white/90 border border-pink-200 focus:border-purple-500 focus:ring-2 focus:ring-pink-200 outline-none text-purple-950 placeholder-purple-400 shadow-sm transition">
+                    </div>
+
+                    <!-- Spread Types -->
+                    <div>
+                        <label class="block text-sm font-bold text-purple-900 mb-2">🔮 اختاري نوع القراءة المعمقة (Spread):</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="spreadSelector">
+                            <button type="button" data-spread="three" class="spread-btn active-spread p-4 rounded-2xl border-2 border-purple-600 bg-gradient-to-br from-pink-100 to-purple-100 text-right transition shadow-sm">
+                                <div class="font-bold text-purple-950 text-sm flex items-center justify-between">
+                                    <span>⏳ مسار الزمن</span>
+                                    <span class="text-xs bg-pink-600 text-white px-2 py-0.5 rounded-full">3 بطاقات</span>
+                                </div>
+                                <p class="text-xs text-purple-700 mt-1">جذور الماضي، طاقة الحاضر، والمستقبل القريب.</p>
+                            </button>
+
+                            <button type="button" data-spread="love" class="spread-btn p-4 rounded-2xl border border-pink-200 bg-white/70 hover:bg-pink-50 text-right transition">
+                                <div class="font-bold text-purple-950 text-sm flex items-center justify-between">
+                                    <span>💕 قراءة الحب</span>
+                                    <span class="text-xs bg-rose-500 text-white px-2 py-0.5 rounded-full">5 بطاقات</span>
+                                </div>
+                                <p class="text-xs text-purple-700 mt-1">طاقتكِ، طاقة الشريك، الرابط، التحدي، والنتيجة.</p>
+                            </button>
+
+                            <button type="button" data-spread="celtic" class="spread-btn p-4 rounded-2xl border border-pink-200 bg-white/70 hover:bg-pink-50 text-right transition">
+                                <div class="font-bold text-purple-950 text-sm flex items-center justify-between">
+                                    <span>🌌 الدائرة الكونية</span>
+                                    <span class="text-xs bg-amber-600 text-white px-2 py-0.5 rounded-full">6 بطاقات</span>
+                                </div>
+                                <p class="text-xs text-purple-700 mt-1">تحليل شامل وعميق للجذور، اللاوعي، والمصير.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Shuffle & Draw Controls -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                        <button type="button" id="shuffleBtn" class="px-6 py-3 rounded-full bg-white border-2 border-amber-400 text-purple-900 font-bold shadow-sm hover:bg-amber-50 transition flex items-center gap-2 cursor-pointer">
+                            <span>🔀</span>
+                            <span>اخلطي البطاقات بطاقتكِ</span>
+                        </button>
+                        <button type="button" id="drawCardsBtn" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white font-bold shadow-lg shadow-purple-400/30 hover:scale-105 transition flex items-center gap-2 cursor-pointer">
+                            <span>🃏</span>
+                            <span>اسحبي البطاقات للقراءة المعمقة</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive Deck Shuffle Visual -->
+                <div id="deckVisualContainer" class="mt-8 flex justify-center items-center h-36">
+                    <div id="visualDeck" class="relative w-24 h-36 cursor-pointer" title="اضغطي لخلط البطاقات">
+                        <div class="absolute inset-0 rounded-2xl tarot-back-pattern transform -rotate-6 translate-x-2 shadow-md"></div>
+                        <div class="absolute inset-0 rounded-2xl tarot-back-pattern transform rotate-6 -translate-x-2 shadow-md"></div>
+                        <div class="absolute inset-0 rounded-2xl tarot-back-pattern shadow-xl flex items-center justify-center">
+                            <span class="text-amber-300 text-2xl animate-pulse">✦</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drawn Cards Board -->
+                <div id="drawnCardsBoard" class="hidden mt-8">
+                    <div class="flex items-center justify-between flex-wrap gap-2 mb-6 border-b border-pink-200 pb-3">
+                        <h3 class="font-serif text-2xl font-bold text-purple-950">🌟 بطاقاتكِ المختارة (اضغطي على كل بطاقة لقلبها)</h3>
+                        <button type="button" id="revealAllBtn" class="text-xs font-bold px-4 py-2 rounded-full bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200 transition cursor-pointer">
+                            ✨ اكشفي جميع البطاقات دفعة واحدة
+                        </button>
+                    </div>
+
+                    <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"></div>
+
+                    <!-- Deep Reading Synthesis Report (Locked if not VIP) -->
+                    <div id="readingSynthesis" class="hidden mt-10 relative">
+                        <div id="readingSynthesisContent" class="glass-card-dark rounded-3xl p-6 sm:p-8 shadow-2xl border border-amber-400/50">
+                            <div class="flex items-center gap-3 mb-4 border-b border-purple-700/80 pb-4">
+                                <span class="text-3xl">📜</span>
+                                <div>
+                                    <h4 class="font-serif text-2xl font-bold text-amber-300">التحليل الروحاني المعمق للقراءة</h4>
+                                    <p id="synthesisQuestionDisplay" class="text-xs text-pink-200 mt-0.5"></p>
+                                </div>
+                            </div>
+                            <div id="synthesisBody" class="space-y-4 text-sm sm:text-base leading-relaxed text-purple-100"></div>
+                        </div>
+
+                        <!-- VIP Lock Overlay for Deep Reading -->
+                        <div id="deepReadingLockOverlay" class="hidden absolute inset-0 z-20 rounded-3xl bg-purple-950/85 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center border-2 border-amber-400">
+                            <span class="text-4xl mb-2">👑</span>
+                            <h4 class="font-serif text-2xl sm:text-3xl font-bold text-amber-300 mb-2">التحليل المعمق جاهز للكشف!</h4>
+                            <p class="text-sm text-purple-100 max-w-md mb-5">
+                                افتحي القراءة المعمقة الكاملة، وقراءة الثلاثة أسئلة، وزوج المستقبل، وتحليل خريطة أركانا المفصل مقابل <strong>5,000 د.ع لمرة واحدة فقط</strong>.
+                            </p>
+                            <button onclick="openVipModal()" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 to-pink-500 text-purple-950 font-extrabold shadow-lg hover:scale-105 transition cursor-pointer">
+                                🔓 افتحي باقة VIP الآن (5,000 د.ع)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PAID VIP SECTION: THREE QUESTIONS READING -->
+        <section id="three-questions-section" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 gold-border relative overflow-hidden">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span class="vip-section-badge text-xs font-bold tracking-wider text-amber-900 bg-amber-100 border border-amber-300 px-3.5 py-1 rounded-full">👑 مشمول في باقة VIP (5,000 د.ع)</span>
+                    <span class="text-xs text-pink-700 font-bold">إجابات مباشرة لـ 3 أسئلة محددة</span>
+                </div>
+
+                <div class="text-center max-w-3xl mx-auto mb-8">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-purple-950 mb-3">❓ قراءة الثلاثة أسئلة الخاصة</h2>
+                    <p class="text-purple-800/80 text-sm sm:text-base">
+                        اكتبي 3 أسئلة تشغل بالكِ الآن (في الحب، العمل، أو قرار مصيري) وستسحب لكِ البطاقات إجابة مخصصة وواضحة لكل سؤال على حدة.
+                    </p>
+                </div>
+
+                <form id="threeQuestionsForm" class="max-w-3xl mx-auto space-y-4">
+                    <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+                        <label class="block text-xs font-bold text-pink-700 mb-1">السؤال الأول (القلب والعلاقات 💕):</label>
+                        <input type="text" id="q1Input" required placeholder="مثال: هل سيعود التواصل بيني وبين من أحب؟" class="w-full px-4 py-2.5 rounded-xl bg-white border border-pink-100 text-sm text-purple-950 focus:border-purple-500 outline-none">
+                    </div>
+
+                    <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+                        <label class="block text-xs font-bold text-purple-700 mb-1">السؤال الثاني (العمل والمال والطموح ✨):</label>
+                        <input type="text" id="q2Input" required placeholder="مثال: هل الخطوة المهنية أو الدراسية الجديدة مناسبة لي؟" class="w-full px-4 py-2.5 rounded-xl bg-white border border-pink-100 text-sm text-purple-950 focus:border-purple-500 outline-none">
+                    </div>
+
+                    <div class="bg-white/80 p-4 rounded-2xl border border-pink-200">
+                        <label class="block text-xs font-bold text-amber-700 mb-1">السؤال الثالث (رسالة القدر أو قرار حائر 🔮):</label>
+                        <input type="text" id="q3Input" required placeholder="مثال: ما الذي يجب أن أركز عليه في الشهر القادم؟" class="w-full px-4 py-2.5 rounded-xl bg-white border border-pink-100 text-sm text-purple-950 focus:border-purple-500 outline-none">
+                    </div>
+
+                    <div class="text-center pt-2">
+                        <button type="submit" class="px-8 py-4 rounded-full bg-gradient-to-r from-pink-500 via-purple-600 to-amber-500 text-white font-bold shadow-lg hover:scale-105 transition cursor-pointer inline-flex items-center gap-2">
+                            <span>🃏</span>
+                            <span>اسحبي إجابات الأسئلة الثلاثة</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Three Questions Result Container -->
+                <div id="threeQuestionsResult" class="hidden mt-10 relative">
+                    <div id="threeQuestionsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+                    <!-- VIP Lock Overlay for Three Questions -->
+                    <div id="threeQuestionsLockOverlay" class="hidden absolute inset-0 z-20 rounded-3xl bg-purple-950/88 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center border-2 border-amber-400">
+                        <span class="text-4xl mb-2">🔒</span>
+                        <h4 class="font-serif text-2xl sm:text-3xl font-bold text-amber-300 mb-2">تم سحب البطاقات لأسئلتكِ الثلاثة!</h4>
+                        <p class="text-sm text-purple-100 max-w-md mb-5">
+                            اشتركي لمرة واحدة فقط بـ <strong>5,000 د.ع</strong> لكشف إجابات أسئلتكِ الثلاثة مع تحليل زوج المستقبل وخريطة أركانا المفصلة.
+                        </p>
+                        <button onclick="openVipModal()" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 to-pink-500 text-purple-950 font-extrabold shadow-lg hover:scale-105 transition cursor-pointer">
+                            👑 افتحي الإجابات الآن (5,000 د.ع)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PAID VIP SECTION: FUTURE HUSBAND / SOULMATE READING -->
+        <section id="future-husband-section" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 gold-border relative overflow-hidden">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span class="vip-section-badge text-xs font-bold tracking-wider text-amber-900 bg-amber-100 border border-amber-300 px-3.5 py-1 rounded-full">👑 مشمول في باقة VIP (5,000 د.ع)</span>
+                    <span class="text-xs text-rose-700 font-bold">دمج التاروت + أركانا + الفلك</span>
+                </div>
+
+                <div class="text-center max-w-3xl mx-auto mb-8">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-purple-950 mb-3">💍 قراءة زوج المستقبل وتوأم الروح</h2>
+                    <p class="text-purple-800/80 text-sm sm:text-base">
+                        أدخلي اسمكِ وتاريخ ميلادكِ لتدمج الخوارزمية الروحانية <strong>4 بطاقات تاروت خاصة بزوج المستقبل</strong> مع <strong>أرقام أركانا العاطفية وبرجكِ</strong> لكشف صفاته، طاقته، وكيف ستلتقيان.
+                    </p>
+                </div>
+
+                <form id="futureHusbandForm" class="max-w-2xl mx-auto bg-white/80 p-6 rounded-3xl border border-pink-200 shadow-sm space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-purple-900 mb-1.5">🌸 اسمكِ الأول:</label>
+                            <input type="text" id="fhName" required placeholder="مثال: نور" class="w-full px-4 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-purple-900 mb-1.5">🎂 تاريخ ميلادكِ:</label>
+                            <input type="date" id="fhBirthDate" required class="w-full px-4 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                        </div>
+                    </div>
+                    <div class="text-center pt-2">
+                        <button type="submit" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 text-white font-bold shadow-lg hover:scale-105 transition cursor-pointer inline-flex items-center justify-center gap-2">
+                            <span>💍</span>
+                            <span>اكشفي مواصفات وطاقة زوج المستقبل</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Future Husband Result -->
+                <div id="futureHusbandResult" class="hidden mt-10 relative">
+                    <div id="fhCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6"></div>
+                    <div id="fhDetailedReport" class="glass-card-dark rounded-3xl p-6 sm:p-8 border border-amber-400/50 space-y-4"></div>
+
+                    <!-- VIP Lock Overlay -->
+                    <div id="futureHusbandLockOverlay" class="hidden absolute inset-0 z-20 rounded-3xl bg-purple-950/88 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center border-2 border-amber-400">
+                        <span class="text-4xl mb-2">💍</span>
+                        <h4 class="font-serif text-2xl sm:text-3xl font-bold text-amber-300 mb-2">تقرير زوج المستقبل جاهز لكِ!</h4>
+                        <p class="text-sm text-purple-100 max-w-md mb-5">
+                            افتحي صفات زوج المستقبل، أسلوب تعبيره عن الحب، وتناغم أركانا والفلك بينكما ضمن باقة VIP الشاملة (<strong>5,000 د.ع لمرة واحدة</strong>).
+                        </p>
+                        <button onclick="openVipModal()" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 to-pink-500 text-purple-950 font-extrabold shadow-lg hover:scale-105 transition cursor-pointer">
+                            🔓 افتحي تقرير زوج المستقبل (5,000 د.ع)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PAID VIP SECTION: ARCANA MATRIX (مصفوفة أركانا) -->
+        <section id="arcana-matrix-section" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 gold-border relative overflow-hidden">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span class="vip-section-badge text-xs font-bold tracking-wider text-amber-900 bg-amber-100 border border-amber-300 px-3.5 py-1 rounded-full">👑 التحليل المفصل مشمول في باقة VIP (5,000 د.ع)</span>
+                    <span class="text-xs text-purple-700 font-bold">مصفوفة المصير الـ 22 أركانا</span>
+                </div>
+
+                <div class="text-center max-w-3xl mx-auto mb-8">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-purple-950 mb-3">✡️ خريطة أركانا وتحليلها المفصل</h2>
+                    <p class="text-purple-800/80 text-sm sm:text-base">
+                        احسبي نجمة أركانا الخاصة بكِ من تاريخ ميلادكِ واكتشفي التحليل الشامل والمعمق لـ <strong>جوهر روحكِ، طاقة النور والظل، كارما العلاقات، وبوابة الوفرة والمال</strong>.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Arcana Input Form -->
+                    <div class="lg:col-span-5 bg-white/80 rounded-3xl p-6 border border-pink-200 shadow-sm space-y-5">
+                        <h3 class="font-serif text-2xl font-bold text-purple-950 border-b border-pink-100 pb-3">✨ احسبي مصفوفة أركانا</h3>
+                        <form id="arcanaForm" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-purple-900 mb-1.5">🌸 الاسم:</label>
+                                <input type="text" id="arcanaName" placeholder="اكتبي اسمكِ هنا" class="w-full px-4 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-purple-900 mb-1.5">🎂 تاريخ الميلاد:</label>
+                                <input type="date" id="arcanaBirthDate" required class="w-full px-4 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                            </div>
+                            <button type="submit" class="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 text-white font-bold shadow-lg hover:scale-[1.02] transition cursor-pointer">
+                                ✡️ احسبي خريطة أركانا وحلليها بالتفصيل
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Arcana Star Diagram & Detailed Analysis -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="glass-card-dark rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+                            <h3 id="arcanaTitleDisplay" class="font-serif text-2xl font-bold text-amber-300 mb-2">نجمة مصفوفة أركانا</h3>
+                            <p class="text-xs text-purple-200 mb-4">أدخلي تاريخ ميلادكِ لرؤية الأركانا الـ 5 الأساسية في نجمتكِ</p>
+
+                            <!-- SVG Arcana Octagram Star -->
+                            <div class="max-w-xs mx-auto my-2">
+                                <svg id="arcanaSvg" viewBox="0 0 360 360" class="w-full h-auto drop-shadow-xl">
+                                    <!-- Outer Sacred Circles -->
+                                    <circle cx="180" cy="180" r="155" fill="none" stroke="rgba(253,224,71,0.3)" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                    <circle cx="180" cy="180" r="125" fill="none" stroke="rgba(244,114,182,0.45)" stroke-width="1.5"/>
+                                    <!-- Diagonal Square -->
+                                    <polygon points="180,45 315,180 180,315 45,180" fill="rgba(236,72,153,0.1)" stroke="#f472b6" stroke-width="1.5"/>
+                                    <!-- Straight Square -->
+                                    <rect x="85" y="85" width="190" height="190" fill="rgba(250,204,21,0.08)" stroke="#fde047" stroke-width="1.5"/>
+                                    <!-- Connecting Lines -->
+                                    <line x1="180" y1="45" x2="180" y2="315" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                                    <line x1="45" y1="180" x2="315" y2="180" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+
+                                    <!-- 5 Key Arcana Nodes -->
+                                    <!-- Left: Soul Essence (Day) -->
+                                    <circle cx="45" cy="180" r="24" fill="#3b0764" stroke="#fde047" stroke-width="2.5"/>
+                                    <text id="arcNodeLeft" x="45" y="186" text-anchor="middle" fill="#fde047" font-size="16" font-weight="bold">?</text>
+                                    <text x="45" y="218" text-anchor="middle" fill="#fbcfe8" font-size="10">الروح</text>
+
+                                    <!-- Top: Spiritual Talent (Month) -->
+                                    <circle cx="180" cy="45" r="24" fill="#3b0764" stroke="#f472b6" stroke-width="2.5"/>
+                                    <text id="arcNodeTop" x="180" y="51" text-anchor="middle" fill="#f472b6" font-size="16" font-weight="bold">?</text>
+                                    <text x="180" y="15" text-anchor="middle" fill="#fbcfe8" font-size="10">الموهبة</text>
+
+                                    <!-- Right: Money & Material Karma (Year) -->
+                                    <circle cx="315" cy="180" r="24" fill="#3b0764" stroke="#38bdf8" stroke-width="2.5"/>
+                                    <text id="arcNodeRight" x="315" y="186" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">?</text>
+                                    <text x="315" y="218" text-anchor="middle" fill="#fbcfe8" font-size="10">المال</text>
+
+                                    <!-- Bottom: Karmic Lesson -->
+                                    <circle cx="180" cy="315" r="24" fill="#3b0764" stroke="#fb7185" stroke-width="2.5"/>
+                                    <text id="arcNodeBottom" x="180" y="321" text-anchor="middle" fill="#fb7185" font-size="16" font-weight="bold">?</text>
+                                    <text x="180" y="352" text-anchor="middle" fill="#fbcfe8" font-size="10">الدرس الكارمي</text>
+
+                                    <!-- Center: Comfort Zone / Core Destiny -->
+                                    <circle cx="180" cy="180" r="30" fill="#701a75" stroke="#facc15" stroke-width="3"/>
+                                    <text id="arcNodeCenter" x="180" y="187" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="bold">?</text>
+                                    <text x="180" y="225" text-anchor="middle" fill="#fde047" font-size="11" font-weight="bold">مركز القوة</text>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Arcana Breakdown (Locked for non-VIP) -->
+                        <div id="arcanaDetailedBox" class="hidden relative">
+                            <div id="arcanaDetailedContent" class="bg-white/90 rounded-3xl p-6 border border-amber-300 shadow-lg space-y-4"></div>
+
+                            <!-- VIP Lock Overlay for Arcana Detailed Analysis -->
+                            <div id="arcanaLockOverlay" class="hidden absolute inset-0 z-20 rounded-3xl bg-purple-950/88 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center border-2 border-amber-400">
+                                <span class="text-4xl mb-2">✡️</span>
+                                <h4 class="font-serif text-2xl font-bold text-amber-300 mb-2">تحليل خريطة أركانا المفصل جاهز!</h4>
+                                <p class="text-xs sm:text-sm text-purple-100 max-w-md mb-4">
+                                    افتحي الشرح المعمق لكل رقم من أرقام أركانا في خريطتكِ (طاقة النور والظل، الحب، والمال) ضمن باقة VIP الشاملة (<strong>5,000 د.ع لمرة واحدة</strong>).
+                                </p>
+                                <button onclick="openVipModal()" class="px-7 py-3 rounded-full bg-gradient-to-r from-amber-400 to-pink-500 text-purple-950 font-extrabold shadow-lg hover:scale-105 transition cursor-pointer">
+                                    👑 افتحي تحليل أركانا المفصل (5,000 د.ع)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FREE SECTION: INTERACTIVE ASTROLOGY & BIRTH CHART -->
+        <section id="astrology-section" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border-2 border-emerald-300/70">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span class="text-xs font-bold tracking-wider text-emerald-800 bg-emerald-100 px-3.5 py-1 rounded-full">🎁 خدمة مجانية بالكامل</span>
+                    <span class="text-xs text-purple-600 font-medium">حساب فلكي دقيق</span>
+                </div>
+
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-purple-950 mb-3">🌙 الخريطة الفلكية وتوازن العناصر الأربعة</h2>
+                    <p class="text-purple-800/80 text-sm sm:text-base">
+                        أدخلي بيانات ميلادكِ للحصول مجاناً على <strong>برجكِ الشمسي، برجكِ القمري، وبرجكِ الطالع</strong> مع رسم عجلة البروج الفلكية وتحليل عناصر النار والتراب والهواء والماء.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Birth Data Form -->
+                    <div class="lg:col-span-5 bg-white/80 rounded-3xl p-6 border border-pink-200 shadow-sm space-y-5">
+                        <h3 class="font-serif text-2xl font-bold text-purple-950 border-b border-pink-100 pb-3">✨ بيانات الميلاد الفلكية</h3>
+                        <form id="astrologyForm" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-purple-900 mb-1.5">🌸 الاسم (اختياري):</label>
+                                <input type="text" id="astroName" placeholder="مثال: سارة" class="w-full px-4 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-purple-900 mb-1.5">🎂 تاريخ الميلاد:</label>
+                                <input type="date" id="birthDate" required class="w-full px-4 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-purple-900 mb-1.5">⏰ ساعة الولادة:</label>
+                                    <input type="time" id="birthTime" value="12:00" class="w-full px-3 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-purple-900 mb-1.5">📍 مدينة الولادة:</label>
+                                    <input type="text" id="birthCity" placeholder="بغداد، أربيل، البصرة..." class="w-full px-3 py-3 rounded-xl bg-white border border-pink-200 text-purple-950 text-sm focus:border-purple-500 outline-none">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-purple-600 text-white font-bold shadow-lg hover:scale-[1.02] transition cursor-pointer">
+                                🌌 احسبي خريطتي الفلكية مجاناً
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Interactive Natal Wheel & Results -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="glass-card-dark rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+                            <h3 id="chartTitleDisplay" class="font-serif text-2xl font-bold text-amber-300 mb-2">عجلة الخريطة الفلكية السماوية</h3>
+                            <p id="chartSubtitleDisplay" class="text-xs text-purple-200 mb-6">أدخلي تاريخ ميلادكِ لعرض مواقع الكواكب في عجلة البروج</p>
+
+                            <div class="relative max-w-xs sm:max-w-sm mx-auto my-2">
+                                <svg id="natalWheelSvg" viewBox="0 0 400 400" class="w-full h-auto drop-shadow-2xl">
+                                    <circle cx="200" cy="200" r="190" fill="none" stroke="rgba(253,224,71,0.5)" stroke-width="2"/>
+                                    <circle cx="200" cy="200" r="155" fill="rgba(30,5,54,0.6)" stroke="rgba(244,114,182,0.4)" stroke-width="1.5"/>
+                                    <circle cx="200" cy="200" r="95" fill="rgba(88,28,135,0.4)" stroke="rgba(253,224,71,0.3)" stroke-width="1"/>
+                                    <circle cx="200" cy="200" r="35" fill="rgba(217,70,239,0.25)" stroke="#fde047" stroke-width="1.5"/>
+                                    <g id="wheelSpokes"></g>
+                                    <g id="wheelPlanets"></g>
+                                    <text x="200" y="205" text-anchor="middle" fill="#fde047" font-size="18">✦</text>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Big 3 & Elements Breakdown -->
+                        <div id="astroResultsContainer" class="hidden space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="bg-white/90 rounded-2xl p-4 border border-amber-300 shadow-sm text-center">
+                                    <span class="text-2xl">☀️</span>
+                                    <div class="text-xs font-bold text-amber-700 mt-1">البرج الشمسي (جوهركِ)</div>
+                                    <div id="sunSignName" class="font-serif text-xl font-bold text-purple-950 mt-0.5">—</div>
+                                    <p id="sunSignDesc" class="text-xs text-purple-700 mt-2 leading-relaxed"></p>
+                                </div>
+
+                                <div class="bg-white/90 rounded-2xl p-4 border border-pink-300 shadow-sm text-center">
+                                    <span class="text-2xl">🌙</span>
+                                    <div class="text-xs font-bold text-pink-700 mt-1">البرج القمري (مشاعركِ)</div>
+                                    <div id="moonSignName" class="font-serif text-xl font-bold text-purple-950 mt-0.5">—</div>
+                                    <p id="moonSignDesc" class="text-xs text-purple-700 mt-2 leading-relaxed"></p>
+                                </div>
+
+                                <div class="bg-white/90 rounded-2xl p-4 border border-purple-300 shadow-sm text-center">
+                                    <span class="text-2xl">⬆️</span>
+                                    <div class="text-xs font-bold text-purple-700 mt-1">البرج الطالع (حضوركِ)</div>
+                                    <div id="risingSignName" class="font-serif text-xl font-bold text-purple-950 mt-0.5">—</div>
+                                    <p id="risingSignDesc" class="text-xs text-purple-700 mt-2 leading-relaxed"></p>
+                                </div>
+                            </div>
+
+                            <!-- 4 Elements Balance -->
+                            <div class="bg-white/90 rounded-3xl p-6 border border-pink-200 shadow-sm">
+                                <h4 class="font-serif text-xl font-bold text-purple-950 mb-4">🌿 توازن العناصر الفلكية الأربعة في خريطتكِ</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center" id="elementsGrid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FREE SECTION: COMPLETE 78 TAROT CARDS ENCYCLOPEDIA -->
+        <section id="encyclopedia-section" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 gold-border">
+                <div class="text-center max-w-3xl mx-auto mb-8">
+                    <span class="text-xs font-bold tracking-wider text-purple-700 bg-purple-100 px-3.5 py-1 rounded-full">موسوعة التاروت الفنية الكاملة (مجاناً)</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-purple-950 mt-3 mb-3">🃏 جميع بطاقات التاروت الـ 78 بالرسوم الذهبية</h2>
+                    <p class="text-purple-800/80 text-sm sm:text-base">
+                        تصفحي مجموعة رايدر-ويت الكاملة: <strong>22 بطاقة الأركانا الكبرى</strong> و<strong>56 بطاقة الأركانا الصغرى</strong> برسوم فنية ذهبية مخصصة.
+                    </p>
+                </div>
+
+                <!-- Search & Suit Filter Bar -->
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-white/80 p-4 rounded-2xl border border-pink-200">
+                    <div class="relative w-full md:w-72">
+                        <input type="text" id="cardSearchInput" placeholder="ابحثي عن اسم البطاقة..." 
+                            class="w-full pl-4 pr-10 py-2.5 rounded-xl bg-pink-50/60 border border-pink-200 text-sm text-purple-950 focus:outline-none focus:border-purple-500">
+                        <span class="absolute right-3 top-2.5 text-purple-400">🔍</span>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-2" id="suitFilters">
+                        <button data-suit="all" class="suit-filter-btn active-suit px-4 py-2 rounded-full text-xs font-bold bg-purple-800 text-white shadow-sm transition cursor-pointer">الكل (78)</button>
+                        <button data-suit="major" class="suit-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-purple-900 border border-pink-200 hover:bg-pink-50 transition cursor-pointer">✨ الأركانا الكبرى (22)</button>
+                        <button data-suit="cups" class="suit-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-purple-900 border border-pink-200 hover:bg-pink-50 transition cursor-pointer">🏆 الكؤوس (14)</button>
+                        <button data-suit="wands" class="suit-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-purple-900 border border-pink-200 hover:bg-pink-50 transition cursor-pointer">🪄 العصي (14)</button>
+                        <button data-suit="swords" class="suit-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-purple-900 border border-pink-200 hover:bg-pink-50 transition cursor-pointer">⚔️ السيوف (14)</button>
+                        <button data-suit="pentacles" class="suit-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-purple-900 border border-pink-200 hover:bg-pink-50 transition cursor-pointer">🪙 العملات (14)</button>
+                    </div>
+                </div>
+
+                <!-- Cards Encyclopedia Grid -->
+                <div id="encyclopediaGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Card Meaning Modal (Encyclopedia Details) -->
+    <div id="cardModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-purple-950/65 backdrop-blur-sm">
+        <div class="glass-panel bg-white max-w-lg w-full rounded-3xl p-6 sm:p-8 gold-border relative shadow-2xl transform transition-all max-h-[90vh] overflow-y-auto">
+            <button id="closeModalBtn" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-pink-100 text-purple-900 flex items-center justify-center hover:bg-pink-200 font-bold transition cursor-pointer">✕</button>
+            <div class="text-center">
+                <div id="modalCardArt" class="w-28 h-40 mx-auto mb-3 rounded-2xl tarot-art-frame p-2 shadow-md flex items-center justify-center"></div>
+                <span id="modalCardSuit" class="text-xs font-bold px-3 py-1 rounded-full bg-pink-100 text-pink-800"></span>
+                <h3 id="modalCardName" class="font-serif text-3xl font-bold text-purple-950 mt-2"></h3>
+                <p id="modalCardEnName" class="text-xs text-amber-700 font-semibold tracking-wider uppercase mt-0.5"></p>
+            </div>
+            <div class="mt-6 space-y-4 text-right text-sm">
+                <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-200">
+                    <h4 class="font-bold text-emerald-900 mb-1">☀️ المعنى في الوضع المعتدل (Upright):</h4>
+                    <p id="modalCardUpright" class="text-emerald-950/90 leading-relaxed"></p>
+                </div>
+                <div class="bg-rose-50/80 p-4 rounded-2xl border border-rose-200">
+                    <h4 class="font-bold text-rose-900 mb-1">🌙 المعنى في الوضع المعكوس (Reversed):</h4>
+                    <p id="modalCardReversed" class="text-rose-950/90 leading-relaxed"></p>
+                </div>
+                <div class="bg-purple-50/80 p-4 rounded-2xl border border-purple-200">
+                    <h4 class="font-bold text-purple-900 mb-1">💕 رسالة البطاقة في الحب والمشاعر:</h4>
+                    <p id="modalCardLove" class="text-purple-950/90 leading-relaxed"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIP UNLOCK & PAYMENT MODAL (5,000 IQD - MASTERCARD & ASIACELL) -->
+    <div id="vipUnlockModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-purple-950/75 backdrop-blur-md">
+        <div class="glass-panel bg-white max-w-lg w-full rounded-3xl p-6 sm:p-8 gold-border relative shadow-2xl max-h-[92vh] overflow-y-auto">
+            <button id="closeVipModalBtn" onclick="closeVipModal()" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-pink-100 text-purple-900 flex items-center justify-center hover:bg-pink-200 font-bold transition cursor-pointer">✕</button>
+
+            <div class="text-center mb-5">
+                <span class="inline-block text-4xl mb-1">👑</span>
+                <h3 class="font-serif text-3xl font-bold text-purple-950">افتحي عضوية أورا VIP الشاملة</h3>
+                <p class="text-xs sm:text-sm text-purple-700 mt-1">دفعة واحدة فقط مدى الحياة — بدون أي اشتراكات شهرية</p>
+                <div class="mt-3 inline-block px-5 py-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-300 text-purple-950 font-extrabold text-lg shadow">
+                    5,000 دينار عراقي فقط
+                </div>
+            </div>
+
+            <!-- Included Features -->
+            <div class="bg-purple-50/90 rounded-2xl p-4 border border-purple-200 mb-5 text-xs sm:text-sm text-purple-900 space-y-1.5">
+                <div class="font-bold text-purple-950 mb-1">✨ ماذا ستحصلين فوراً عند التفعيل؟</div>
+                <div>✅ <strong>قراءة التاروت المعمقة:</strong> تحليل شامل للماضي والحاضر والمستقبل.</div>
+                <div>✅ <strong>قراءة الثلاثة أسئلة:</strong> إجابات مخصصة لـ 3 أسئلة تهمكِ الآن.</div>
+                <div>✅ <strong>تحليل زوج المستقبل:</strong> صفاته وطاقته وتناغمه مع أركانا وفلككِ.</div>
+                <div>✅ <strong>تحليل خريطة أركانا المفصل:</strong> شرح كامل لأرقام مصفوفة حياتكِ.</div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="space-y-4">
+                <!-- Method 1: MasterCard (Choose 5,000 IQD, enter customer MasterCard number, click Pay; owner's MasterCard stays completely hidden from public) -->
+                <div class="p-4 rounded-2xl bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-purple-950 text-sm">💳 الطريقة الأولى: الدفع عبر الماستر كارد</span>
+                        <span class="text-xs font-extrabold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">الباقة المختارة: 5,000 د.ع</span>
+                    </div>
+
+                    <!-- Package Selection (5,000 IQD) -->
+                    <label class="flex items-center justify-between p-2.5 mb-2.5 rounded-xl bg-white border-2 border-purple-500 cursor-pointer">
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="masterPackageSelect" id="masterPackage5000" value="5000" checked class="accent-purple-600 w-4 h-4">
+                            <span class="text-xs font-bold text-purple-950">باقة أورا VIP الشاملة</span>
+                        </div>
+                        <span class="text-xs font-extrabold text-purple-800">5,000 دينار عراقي (دفعة واحدة)</span>
+                    </label>
+
+                    <!-- Customer MasterCard Input + Pay Button -->
+                    <div class="space-y-2">
+                        <input type="text" id="customerMasterCardInput" inputmode="numeric" maxlength="19" placeholder="أدخلي رقم بطاقة الماستر كارد الخاصة بكِ (مثال: 52xx xxxx xxxx xxxx)"
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-purple-300 text-xs sm:text-sm font-bold text-purple-950 text-center tracking-wider focus:outline-none focus:border-purple-600" dir="ltr">
+                        <button type="button" id="verifyMasterPaymentBtn" class="w-full py-3 px-5 rounded-2xl bg-gradient-to-r from-amber-500 via-pink-500 to-purple-600 text-white font-extrabold text-sm shadow-md hover:shadow-lg hover:scale-[1.01] transition inline-flex items-center justify-center gap-2 cursor-pointer">
+                            <span>💳</span>
+                            <span>دفع (5,000 د.ع)</span>
+                        </button>
+                    </div>
+
+                    <!-- Hidden Owner Card Holders (Never visible to customers) -->
+                    <div id="masterAccountDetailsBox" class="hidden">
+                        <span id="ownerMasterNumberDisplay" class="hidden"></span>
+                        <button type="button" id="copyMasterCardBtn" class="hidden"></button>
+                    </div>
+                    <a id="masterPayActionBtn" href="javascript:void(0)" class="hidden"></a>
+                    <p id="payLinkNotice" class="hidden"></p>
+                </div>
+
+                <!-- Method 2: Asiacell Balance Card (5,000 IQD) -->
+                <div class="p-4 rounded-2xl bg-rose-50/90 border border-rose-300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-bold text-rose-950 text-sm">📱 الطريقة الثانية: رصيد آسياسيل (5,000)</span>
+                        <span class="text-xs bg-rose-600 text-white px-2.5 py-0.5 rounded-full font-bold">Asiacell</span>
+                    </div>
+                    <p class="text-xs text-rose-800 mb-3 leading-relaxed">
+                        اكتبي <strong>رقم كارت تعبئة آسياسيل (14 رقماً)</strong> فئة 5,000 دينار واضغطي دفع للتحقق الفوري:
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="tel" id="asiacellPinInput" maxlength="16" inputmode="numeric" placeholder="أدخلي رقم كارت الرصيد (14 رقماً)" 
+                            class="flex-1 px-4 py-2.5 rounded-xl bg-white border border-rose-300 text-sm font-bold text-purple-950 text-center tracking-widest focus:outline-none focus:border-rose-500" dir="ltr">
+                        <button type="button" id="payAsiacellBtn" class="px-5 py-2.5 rounded-xl bg-rose-600 text-white font-bold text-xs sm:text-sm hover:bg-rose-700 transition cursor-pointer whitespace-nowrap">
+                            💳 دفع بالرصيد
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pending Payment Status Box -->
+                <div id="pendingPaymentBanner" class="hidden p-4 rounded-2xl bg-amber-50 border-2 border-amber-400 text-right space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold text-amber-900">⏳ طلب الدفع قيد المراجعة والتحقق</span>
+                        <span id="pendingOrderBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-950"></span>
+                    </div>
+                    <p id="pendingOrderDetailsText" class="text-xs text-amber-900 leading-relaxed"></p>
+                    <p class="text-[11px] text-purple-800 font-semibold">بمجرد التحقق من الرصيد أو التحويل، ستظهر لكِ نافذة <strong>«تم الدفع بنجاح»</strong> وتُفتح جميع الباقات تلقائياً.</p>
+                </div>
+
+                <span id="vipCodeMsg" class="text-xs font-bold block text-center"></span>
+
+                <!-- Owner Secret Access & Payment Verification Panel -->
+                <div class="pt-3 border-t border-pink-100 text-center">
+                    <button type="button" id="toggleOwnerLoginBtn" class="text-[11px] text-purple-400 hover:text-purple-700 underline cursor-pointer">
+                        دخول المالكة
+                    </button>
+                    <div id="ownerLoginBox" class="hidden mt-3 p-3 rounded-2xl bg-purple-950 text-purple-100 space-y-2 text-right">
+                        <label class="block text-[11px] font-bold text-amber-300">🔐 الرمز السري للمالكة:</label>
+                        <div class="flex gap-2">
+                            <input type="password" id="ownerSecretInput" placeholder="أدخلي الرمز السري..." class="flex-1 px-3 py-1.5 rounded-xl bg-purple-900 border border-purple-700 text-xs text-white focus:outline-none">
+                            <button type="button" id="ownerLoginSubmitBtn" class="px-4 py-1.5 rounded-xl bg-amber-400 text-purple-950 font-bold text-xs cursor-pointer">دخول</button>
+                        </div>
+
+                        <!-- Owner Configuration & Pending Payments Queue -->
+                        <div id="ownerSettingsPanel" class="hidden pt-3 mt-2 border-t border-purple-800 space-y-3">
+                            <div class="text-[11px] text-emerald-300 font-bold">✅ وضع المالكة مفعّل — جميع الميزات مفتوحة لكِ</div>
+
+                            <!-- Pending Payments Review Queue -->
+                            <div class="bg-purple-900/90 p-3 rounded-xl border border-amber-400/50 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-extrabold text-amber-300">📋 طلبات الدفع بانتظار التحقق</span>
+                                    <button type="button" id="refreshPendingPaymentsBtn" class="text-[10px] px-2 py-0.5 rounded bg-purple-800 text-purple-200 hover:bg-purple-700 cursor-pointer">تحديث ↻</button>
+                                </div>
+                                <div id="ownerPendingPaymentsList" class="space-y-2 max-h-48 overflow-y-auto text-[11px]">
+                                    <div class="text-purple-300 text-center py-2">لا توجد طلبات معلقة حالياً.</div>
+                                </div>
+                            </div>
+
+                            <!-- MasterCard Settings -->
+                            <div class="space-y-1.5">
+                                <label class="block text-[11px] text-amber-200">رقم بطاقة الماستر كارد للتحويل (أو رابط الدفع):</label>
+                                <input type="text" id="cfgMasterCard" placeholder="مثال: 5217 xxxx xxxx xxxx" class="w-full px-3 py-1.5 rounded-xl bg-purple-900 border border-purple-700 text-xs text-white" dir="ltr">
+                                <label class="block text-[11px] text-amber-200">اسم المستلم الظاهر للزبونة:</label>
+                                <input type="text" id="cfgBeneficiary" placeholder="أورا وميض" class="w-full px-3 py-1.5 rounded-xl bg-purple-900 border border-purple-700 text-xs text-white">
+                                <button type="button" id="saveOwnerConfigBtn" class="w-full py-1.5 rounded-xl bg-emerald-500 text-white font-bold text-xs cursor-pointer">حفظ الإعدادات للمتجر</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT SUCCESS POPUP MODAL -->
+    <div id="paymentSuccessModal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-purple-950/80 backdrop-blur-md">
+        <div class="glass-panel bg-white max-w-md w-full rounded-3xl p-8 gold-border text-center shadow-2xl transform transition-all space-y-4">
+            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-emerald-400 to-teal-500 text-white flex items-center justify-center text-4xl shadow-lg animate-bounce">
+                ✓
+            </div>
+            <h3 class="font-serif text-3xl font-bold text-emerald-700">تم الدفع بنجاح! 🎉</h3>
+            <p class="text-sm text-purple-900 leading-relaxed">
+                أهلاً بكِ في <strong>عضوية أورا VIP الشاملة</strong>! تم فتح جميع القراءات المعمقة، قراءة الثلاثة أسئلة، تحليل زوج المستقبل، وخريطة أركانا المفصلة وحفظها لحسابكِ تلقائياً.
+            </p>
+            <button type="button" id="closeSuccessModalBtn" class="w-full py-3.5 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-purple-600 text-white font-extrabold shadow-lg hover:scale-105 transition cursor-pointer">
+                ✨ ابدئي القراءة الآن
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-pink-200/70 bg-white/60 backdrop-blur-md py-8 text-center">
+        <div class="max-w-4xl mx-auto px-4 space-y-2">
+            <div class="font-serif text-2xl font-bold text-gold-gradient">أورا وميض ✦ Aura Wameedh</div>
+            <p class="text-xs text-purple-700">
+                منصة التاروت والخرائط الفلكية ومصفوفة أركانا • صُممت بكل حب وإلهام روحاني ✨
+            </p>
+        </div>
+    </footer>
+
+    <!-- Application Logic & Complete 78-Card Deck + Custom SVG Art Generator + Arcana + Astrology + VIP Access -->
+    <script>
+        // ==========================================
+        // 0. VIP ACCESS & PAYMENT STATE
+        // ==========================================
+        const OWNER_SECRET_KEY = "777rany";
+        let isVipUnlocked = localStorage.getItem('aura_vip_unlocked') === 'true';
+        let isOwnerLoggedIn = localStorage.getItem('aura_owner_mode') === 'true';
+
+        if (isOwnerLoggedIn) {
+            isVipUnlocked = true;
+        }
+
+        function updateVipUIState() {
+            const navText = document.getElementById('vipNavText');
+            const navIcon = document.getElementById('vipNavIcon');
+            if (isOwnerLoggedIn) {
+                if (navText) navText.textContent = "وضع المالكة مفعّل 👑";
+                if (navIcon) navIcon.textContent = "✨";
+            } else if (isVipUnlocked) {
+                if (navText) navText.textContent = "عضوية VIP مفعّلة ✓";
+                if (navIcon) navIcon.textContent = "👑";
+            } else {
+                if (navText) navText.textContent = "افتحي كل الميزات (5,000 د.ع)";
+                if (navIcon) navIcon.textContent = "👑";
+            }
+
+            // Update VIP badges & remove lock overlays if unlocked
+            document.querySelectorAll('.vip-section-badge').forEach(badge => {
+                if (isVipUnlocked) {
+                    badge.textContent = "✅ مفتوح لكِ (عضوية VIP)";
+                    badge.classList.remove('bg-amber-100', 'text-amber-900', 'border-amber-300');
+                    badge.classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
+                }
+            });
+
+            if (isVipUnlocked) {
+                ['deepReadingLockOverlay', 'threeQuestionsLockOverlay', 'futureHusbandLockOverlay', 'arcanaLockOverlay'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('hidden');
+                });
+                ['readingSynthesisContent', 'threeQuestionsGrid', 'fhDetailedReport', 'arcanaDetailedContent'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.remove('vip-blur-preview');
+                });
+            }
+        }
+
+        function openVipModal() {
+            const modal = document.getElementById('vipUnlockModal');
+            if (!modal) return;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeVipModal() {
+            const modal = document.getElementById('vipUnlockModal');
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function showPaymentSuccessPopup() {
+            closeVipModal();
+            const successModal = document.getElementById('paymentSuccessModal');
+            if (successModal) {
+                successModal.classList.remove('hidden');
+                successModal.classList.add('flex');
+            }
+        }
+
+        function unlockVipSuccess() {
+            isVipUnlocked = true;
+            localStorage.setItem('aura_vip_unlocked', 'true');
+            if (typeof window.syncVipToCloud === 'function') {
+                window.syncVipToCloud(true, isOwnerLoggedIn);
+            }
+            updateVipUIState();
+            showPaymentSuccessPopup();
+        }
+
+        // Close Success Modal Button
+        document.getElementById('closeSuccessModalBtn')?.addEventListener('click', () => {
+            const successModal = document.getElementById('paymentSuccessModal');
+            if (successModal) {
+                successModal.classList.add('hidden');
+                successModal.classList.remove('flex');
+            }
+        });
+
+        // Pay via Asiacell Balance (5,000 IQD) -> Submits for Verification (Prevents fake numbers)
+        document.getElementById('payAsiacellBtn')?.addEventListener('click', async () => {
+            const pinInput = document.getElementById('asiacellPinInput');
+            const msg = document.getElementById('vipCodeMsg');
+            const pin = pinInput ? pinInput.value.replace(/\s+/g, '').trim() : '';
+
+            if (!/^\d{13,16}$/.test(pin)) {
+                if (msg) {
+                    msg.textContent = "⚠️ يرجى إدخال رقم كارت تعبئة رصيد آسياسيل الصحيح (14 رقماً)";
+                    msg.className = "text-xs font-bold text-rose-600 block text-center";
+                }
+                return;
+            }
+
+            if (typeof window.submitPaymentForReview === 'function') {
+                await window.submitPaymentForReview('رصيد آسياسيل (5,000 د.ع)', pin);
+            }
+        });
+
+        // Owner Secret Login & Settings
+        document.getElementById('toggleOwnerLoginBtn')?.addEventListener('click', () => {
+            document.getElementById('ownerLoginBox')?.classList.toggle('hidden');
+        });
+
+        document.getElementById('ownerLoginSubmitBtn')?.addEventListener('click', () => {
+            const secretVal = document.getElementById('ownerSecretInput')?.value.trim();
+            const msg = document.getElementById('vipCodeMsg');
+            if (secretVal === OWNER_SECRET_KEY) {
+                isOwnerLoggedIn = true;
+                isVipUnlocked = true;
+                localStorage.setItem('aura_owner_mode', 'true');
+                localStorage.setItem('aura_vip_unlocked', 'true');
+                if (typeof window.syncVipToCloud === 'function') {
+                    window.syncVipToCloud(true, true);
+                }
+                document.getElementById('ownerSettingsPanel')?.classList.remove('hidden');
+                updateVipUIState();
+                if (typeof window.loadOwnerPendingPayments === 'function') {
+                    window.loadOwnerPendingPayments();
+                }
+                if (msg) {
+                    msg.textContent = "👑 تم تفعيل وضع المالكة وفتح جميع الباقات لكِ بالكامل!";
+                    msg.className = "text-xs font-bold text-emerald-600 block text-center";
+                }
+            } else {
+                if (msg) {
+                    msg.textContent = "❌ الرمز غير صحيح.";
+                    msg.className = "text-xs font-bold text-rose-600 block text-center";
+                }
+            }
+        });
+
+        if (isOwnerLoggedIn) {
+            document.getElementById('ownerLoginBox')?.classList.remove('hidden');
+            document.getElementById('ownerSettingsPanel')?.classList.remove('hidden');
+        }
+
+        // ==========================================
+        // 1. CUSTOM GOLDEN MYSTICAL SVG ART GENERATOR FOR ALL 78 CARDS
+        // ==========================================
+        function getCardArtSVG(card) {
+            const suitColors = {
+                major: { primary: '#d97706', secondary: '#9333ea', bg: '#fef3c7' },
+                cups: { primary: '#0284c7', secondary: '#ec4899', bg: '#e0f2fe' },
+                wands: { primary: '#ea580c', secondary: '#eab308', bg: '#ffedd5' },
+                swords: { primary: '#4f46e5', secondary: '#64748b', bg: '#e0e7ff' },
+                pentacles: { primary: '#059669', secondary: '#d97706', bg: '#d1fae5' }
+            };
+            const theme = suitColors[card.suit] || suitColors.major;
+
+            let centralMotif = '';
+            if (card.suit === 'major') {
+                const motifs = [
+                    `<circle cx="50" cy="42" r="14" stroke="${theme.primary}" stroke-width="2" fill="${theme.bg}"/><path d="M50 20 L53 38 L70 42 L53 46 L50 64 L47 46 L30 42 L47 38 Z" fill="${theme.primary}"/>`,
+                    `<path d="M35 65 L50 28 L65 65 Z" stroke="${theme.primary}" stroke-width="2" fill="none"/><circle cx="50" cy="52" r="7" fill="${theme.secondary}"/><path d="M32 24 Q50 14 68 24" stroke="${theme.primary}" stroke-width="2" fill="none"/>`,
+                    `<path d="M56 26 A22 22 0 1 0 56 70 A16 16 0 1 1 56 26 Z" fill="${theme.primary}"/><circle cx="38" cy="48" r="3" fill="${theme.secondary}"/>`,
+                    `<path d="M30 62 L35 38 L50 48 L65 38 L70 62 Z" fill="${theme.primary}" stroke="${theme.secondary}" stroke-width="1.5"/><circle cx="50" cy="30" r="4" fill="${theme.secondary}"/>`,
+                    `<polygon points="50,22 74,48 50,74 26,48" fill="none" stroke="${theme.primary}" stroke-width="2"/><circle cx="50" cy="48" r="10" fill="${theme.bg}" stroke="${theme.secondary}" stroke-width="2"/>`
+                ];
+                centralMotif = motifs[card.id % motifs.length];
+            } else if (card.suit === 'cups') {
+                centralMotif = `
+                    <path d="M34 32 L66 32 L60 52 Q50 60 40 52 Z" fill="${theme.bg}" stroke="${theme.primary}" stroke-width="2.2"/>
+                    <line x1="50" y1="56" x2="50" y2="70" stroke="${theme.primary}" stroke-width="2.5"/>
+                    <line x1="38" y1="70" x2="62" y2="70" stroke="${theme.primary}" stroke-width="2.5"/>
+                    <path d="M44 24 Q50 18 56 24" stroke="${theme.secondary}" stroke-width="1.8" fill="none"/>
+                `;
+            } else if (card.suit === 'wands') {
+                centralMotif = `
+                    <line x1="36" y1="72" x2="64" y2="24" stroke="${theme.primary}" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M64 24 Q72 20 68 30 M60 32 Q52 28 56 36 M48 48 Q40 44 44 52" stroke="#16a34a" stroke-width="2" fill="none"/>
+                    <circle cx="64" cy="24" r="3" fill="${theme.secondary}"/>
+                `;
+            } else if (card.suit === 'swords') {
+                centralMotif = `
+                    <line x1="50" y1="20" x2="50" y2="66" stroke="${theme.primary}" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="36" y1="56" x2="64" y2="56" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="50" y1="56" x2="50" y2="72" stroke="#d97706" stroke-width="3"/>
+                    <circle cx="50" cy="74" r="3" fill="#d97706"/>
+                `;
+            } else if (card.suit === 'pentacles') {
+                centralMotif = `
+                    <circle cx="50" cy="48" r="22" fill="${theme.bg}" stroke="${theme.primary}" stroke-width="2.5"/>
+                    <polygon points="50,28 55,43 70,43 58,52 62,67 50,58 38,67 42,52 30,43 45,43" fill="none" stroke="${theme.secondary}" stroke-width="1.6"/>
+                `;
+            }
+
+            return `
+                <svg viewBox="0 0 100 96" class="w-full h-full">
+                    <defs>
+                        <radialGradient id="glow-${card.id}" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#fde047" stop-opacity="0.35"/>
+                            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="50" cy="48" r="38" fill="url(#glow-${card.id})"/>
+                    <circle cx="50" cy="48" r="34" fill="none" stroke="#d97706" stroke-width="0.8" stroke-dasharray="2 3"/>
+                    ${centralMotif}
+                </svg>
+            `;
+        }
+
+        // ==========================================
+        // 2. COMPLETE 78 TAROT CARDS DATABASE
+        // ==========================================
+        const majorArcanaData = [
+            { id: 0, num: "0", name: "الأحمق (البدايات)", en: "The Fool", suit: "major", suitAr: "الأركانا الكبرى", upright: "بدايات جديدة مشرقة، انطلاقة حرة، براءة، ثقة في الكون، ومغامرة روحية واعدة.", reversed: "تهور، تردد في اتخاذ خطوة جديدة، خوف من المجهول، أو تشتت الطاقة.", love: "بداية قصة حب عفوية ومليئة بالبهجة والانفتاح على تجارب عاطفية جديدة." },
+            { id: 1, num: "I", name: "الساحر", en: "The Magician", suit: "major", suitAr: "الأركانا الكبرى", upright: "قوة الإرادة، التجلي، الإبداع، وامتلاك كل الأدوات لتحقيق أحلامكِ.", reversed: "تلاعب، خداع، طاقة مهدرة، أو عدم الثقة بقدراتكِ الحقيقية.", love: "جاذبية مغناطيسية عالية، تواصل ساحر، وقدرة على جذب الشريك المثالي." },
+            { id: 2, num: "II", name: "الكاهنة العليا", en: "The High Priestess", suit: "major", suitAr: "الأركانا الكبرى", upright: "الحدس القوي، الأسرار الروحانية، الحكمة الداخلية، والصمت العميق.", reversed: "تجاهل الصوت الداخلي، أسرار مكشوفة، أو تقلبات عاطفية خفية.", love: "رابط روحي عميق يتجاوز الكلمات، استمعي لحدسكِ حول مشاعر الطرف الآخر." },
+            { id: 3, num: "III", name: "الإمبراطورة", en: "The Empress", suit: "major", suitAr: "الأركانا الكبرى", upright: "الأنوثة الطاغية، الوفرة، الجمال، الخصوبة، والرعاية والحب غير المشروط.", reversed: "اعتماد عاطفي مفرط، إهمال الذات، أو ركود في الإبداع.", love: "رومانسية دافئة، انسجام، وازدهار عاطفي كبير مليء بالحنان." },
+            { id: 4, num: "IV", name: "الإمبراطور", en: "The Emperor", suit: "major", suitAr: "الأركانا الكبرى", upright: "الاستقرار، القوة، النظام، الحماية، وبناء أسس صلبة للمستقبل.", reversed: "تسلط، عناد، جمود عاطفي، أو صراع على السيطرة.", love: "شريك جاد، مسؤول، ويوفر الأمان والاستقرار طويل الأمد." },
+            { id: 5, num: "V", name: "الكاهن الأعظم", en: "The Hierophant", suit: "major", suitAr: "الأركانا الكبرى", upright: "التقاليد، الالتزام الرسمي، الحكمة الروحية، والزواج أو الارتباط المبارك.", reversed: "التمرد على القيود، كسر التقاليد، أو البحث عن مسار روحي خاص.", love: "علاقة رسمية، زواج، أو ارتباط مبني على القيم والاحترام المتبادل." },
+            { id: 6, num: "VI", name: "العشاق", en: "The Lovers", suit: "major", suitAr: "الأركانا الكبرى", upright: "توأم الروح، الانسجام التام، الحب الحقيقي، واختيار القلب الصادق.", reversed: "عدم توافق، حيرة بين خيارين، أو اختلال التوازن في العلاقة.", love: "قصة حب عميقة وتناغم روحي وجسدي استثنائي." },
+            { id: 7, num: "VII", name: "العربة", en: "The Chariot", suit: "major", suitAr: "الأركانا الكبرى", upright: "الانتصار، العزيمة، التقدم السريع، والسيطرة على التحديات.", reversed: "فقدان الاتجاه، تسرع، أو عقبات مؤقتة تتطلب ضبط النفس.", love: "تقدم سريع في العلاقة وتجاوز أي خلافات بقوة الإرادة." },
+            { id: 8, num: "VIII", name: "القوة", en: "Strength", suit: "major", suitAr: "الأركانا الكبرى", upright: "الشجاعة الهادئة، الصبر، اللطف الذي يروض الصعاب، والثقة بالنفس.", reversed: "شك بالذات، ضعف مؤقت، أو انفعال عاطفي.", love: "حب صبور ومتفهم يقوم على الاحتواء واللطف لا الصراع." },
+            { id: 9, num: "IX", name: "الناسك", en: "The Hermit", suit: "major", suitAr: "الأركانا الكبرى", upright: "التأمل الداخلي، البحث عن الحقيقة، الحكمة، والهدوء الروحي.", reversed: "عزلة مفرطة، شعور بالوحدة، أو الهروب من المواجهة.", love: "فترة هدوء وتأمل لإعادة تقييم المشاعر وفهم ما تريدينه حقاً." },
+            { id: 10, num: "X", name: "عجلة الحظ", en: "Wheel of Fortune", suit: "major", suitAr: "الأركانا الكبرى", upright: "تحول قدري إيجابي، حظ سعيد، دورة حياة جديدة، ومفاجآت سارة.", reversed: "تأخير مؤقت، مقاومة التغيير، أو تقلبات غير متوقعة.", love: "لقاء قدري أو تحول مفاجئ يغير مسار حياتكِ العاطفية للأفضل." },
+            { id: 11, num: "XI", name: "العدالة", en: "Justice", suit: "major", suitAr: "الأركانا الكبرى", upright: "الإنصاف، الحقيقة، التوازن، والنتائج العادلة لكل ما بذلتِه.", reversed: "ظلم، عدم إنصاف، أو تجنب تحمل المسؤولية.", love: "وضوح تام، صدق، وعلاقة متوازنة يأخذ فيها كل طرف حقه." },
+            { id: 12, num: "XII", name: "المعلق", en: "The Hanged Man", suit: "major", suitAr: "الأركانا الكبرى", upright: "رؤية الأمور من زاوية جديدة، التسليم الروحي، والانتظار الحكيم.", reversed: "تأجيل بلا جدوى، مقاومة التغيير، أو شعور بالتوقف.", love: "توقف مؤقت لإعادة النظر في العلاقة قبل اتخاذ القرار الحاسم." },
+            { id: 13, num: "XIII", name: "التحول (الموت)", en: "Death", suit: "major", suitAr: "الأركانا الكبرى", upright: "نهاية مرحلة وبداية ولادة جديدة، تحول جذري، والتخلص من الماضي.", reversed: "التشبث بالماضي، خوف من التغيير، أو بطء في التجديد.", love: "نهاية نمط قديم في العلاقات وبداية فصل جديد أكثر نضجاً." },
+            { id: 14, num: "XIV", name: "الاعتدال", en: "Temperance", suit: "major", suitAr: "الأركانا الكبرى", upright: "الانسجام، الشفاء الروحي، التوازن، والصبر الجميل.", reversed: "إفراط، عدم توازن، أو استعجال النتائج.", love: "علاقة هادئة، متناغمة، وتجلب السلام والشفاء لقلبكِ." },
+            { id: 15, num: "XV", name: "الشيطان (التعلق)", en: "The Devil", suit: "major", suitAr: "الأركانا الكبرى", upright: "شغف قوي، تعلق مادي أو عاطفي، أو قيود وهمية تحتاج للتحرر.", reversed: "التحرر من القيود، كسر التعلق السام، واستعادة الحرية.", love: "انجذاب عاطفي جارف، لكن انتبهي من التعلق الزائد أو الغيرة." },
+            { id: 16, num: "XVI", name: "البرج", en: "The Tower", suit: "major", suitAr: "الأركانا الكبرى", upright: "كشف مفاجئ للحقائق، انهيار ما هو زائف لبناء أساس حقيقي.", reversed: "تجنب أزمة، خوف من التغيير الجذري، أو تأجيل المواجهة.", love: "مصارحة مفاجئة تزيل الأقنعة وتكشف حقيقة المشاعر." },
+            { id: 17, num: "XVII", name: "النجمة", en: "The Star", suit: "major", suitAr: "الأركانا الكبرى", upright: "الأمل المتجدد، الإلهام، السلام الداخلي، وتحقق الأمنيات.", reversed: "فقدان الأمل مؤقتاً، تشاؤم، أو انقطاع الإلهام.", love: "فترة شفاء وتفاؤل، وبشارة بعلاقة نقية ومباركة من السماء." },
+            { id: 18, num: "XVIII", name: "القمر", en: "The Moon", suit: "major", suitAr: "الأركانا الكبرى", upright: "الأحلام، الحدس العميق، المشاعر الخفية، والغموض الساحر.", reversed: "انكشاف الأوهام، زوال الخوف، ووضوح الرؤية.", love: "مشاعر عميقة وغير معلنة بعد؛ لا تتسرعي في الحكم واتبعي حدسكِ." },
+            { id: 19, num: "XIX", name: "الشمس", en: "The Sun", suit: "major", suitAr: "الأركانا الكبرى", upright: "السعادة الغامرة، النجاح، الوضوح، الدفء، والاحتفال بالحياة.", reversed: "تأخر بسيط في الفرح، أو حاجة لتقدير النعم الحالية.", love: "أجمل بطاقات الحب: فرح، وضوح، سعادة، ونجاح باهر في العلاقة." },
+            { id: 20, num: "XX", name: "الصحوة (الحكم)", en: "Judgement", suit: "major", suitAr: "الأركانا الكبرى", upright: "نداء الروح، التجدد، المسامحة، وقرار مصيري يرفعكِ لمستوى أعلى.", reversed: "شك في الذات، ندم، أو تجاهل نداء التغيير.", love: "فرصة ثانية، مصالحة صادقة، أو ارتقاء العلاقة لمستوى أعمق." },
+            { id: 21, num: "XXI", name: "العالم", en: "The World", suit: "major", suitAr: "الأركانا الكبرى", upright: "الاكتمال، الإنجاز الكبير، النجاح، السفر، وتحقق الدائرة الكاملة.", reversed: "عدم اكتمال مشروع، تأخير بسيط قبل خط النهاية.", love: "اكتمال السعادة العاطفية، ارتباط متكامل، والشعور بالرضا التام." }
+        ];
+
+        const minorSuitsConfig = [
+            { key: "cups", ar: "الكؤوس", en: "Cups", element: "الماء", themeUpright: "مشاعر صادقة، دفء عاطفي، حدس، وتناغم قلبي", themeReversed: "حساسية مفرطة، تقلب مزاجي، أو كبت للمشاعر", themeLove: "انفتاح عاطفي ومودة صافية تملأ القلب" },
+            { key: "wands", ar: "العصي", en: "Wands", element: "النار", themeUpright: "شغف متقد، طموح، إبداع، وحركة سريعة نحو الهدف", themeReversed: "تسرع، نفاد صبر، أو تشتت في الحماس", themeLove: "شرارة حب قوية وحماس متجدد بين الطرفين" },
+            { key: "swords", ar: "السيوف", en: "Swords", element: "الهواء", themeUpright: "وضوح ذهني، حقيقة، قرار حاسم، وقوة فكرية", themeReversed: "قلق ذهني، سوء تفاهم، أو تردد في الكلام", themeLove: "حوار صريح ووضوح في النوايا يزيل أي التباس" },
+            { key: "pentacles", ar: "العملات", en: "Pentacles", element: "التراب", themeUpright: "وفرة مادية، استقرار عملي، أمان، ونتائج ملموسة", themeReversed: "قلق مالي مؤقت، بطء في الإنجاز، أو إهمال الجانب العملي", themeLove: "علاقة مستقرة، جدية، وتبني مستقبلاً آمناً معاً" }
+        ];
+
+        const ranksConfig = [
+            { r: 1, ar: "آس (بداية)", en: "Ace", desc: "بذرة جديدة وفرصة ذهبية في" },
+            { r: 2, ar: "اثنان", en: "Two", desc: "توازن وشراكة واختيار في" },
+            { r: 3, ar: "ثلاثة", en: "Three", desc: "نمو وتعاون واحتفال في" },
+            { r: 4, ar: "أربعة", en: "Four", desc: "استقرار وهدوء وتأمل في" },
+            { r: 5, ar: "خمسة", en: "Five", desc: "تحدٍّ عابر ودرس للنضج في" },
+            { r: 6, ar: "ستة", en: "Six", desc: "انسجام وذكريات جميلة وعطاء في" },
+            { r: 7, ar: "سبعة", en: "Seven", desc: "تقييم وصبر وثبات في" },
+            { r: 8, ar: "ثمانية", en: "Eight", desc: "حركة سريعة وإتقان وتقدم في" },
+            { r: 9, ar: "تسعة", en: "Nine", desc: "اكتفاء ذاتي واقتراب من القمة في" },
+            { r: 10, ar: "عشرة", en: "Ten", desc: "اكتمال الدورة ووفرة كاملة في" },
+            { r: 11, ar: "خادم (Page)", en: "Page", desc: "رسالة سارة وبداية فضول وتعلم في" },
+            { r: 12, ar: "فارس (Knight)", en: "Knight", desc: "اندفاع وحركة وشجاعة في" },
+            { r: 13, ar: "ملكة (Queen)", en: "Queen", desc: "نضج أنثوي وحكمة واحتواء في" },
+            { r: 14, ar: "ملك (King)", en: "King", desc: "قيادة وسيطرة وحكمة ناضجة في" }
+        ];
+
+        const fullTarotDeck = [...majorArcanaData];
+        let nextId = 22;
+
+        minorSuitsConfig.forEach(suit => {
+            ranksConfig.forEach(rank => {
+                fullTarotDeck.push({
+                    id: nextId++,
+                    num: rank.r <= 10 ? String(rank.r) : rank.en[0],
+                    name: `${rank.ar} ${suit.ar}`,
+                    en: `${rank.en} of ${suit.en}`,
+                    suit: suit.key,
+                    suitAr: `مجموعة ${suit.ar} (${suit.element})`,
+                    upright: `${rank.desc} ${suit.ar}: ${suit.themeUpright}.`,
+                    reversed: `في الوضع المعكوس: ${suit.themeReversed}، مما يدعوكِ لإعادة التوازن.`,
+                    love: `${suit.themeLove} بطاقة عنصر ${suit.element}.`
+                });
+            });
+        });
+
+        // ==========================================
+        // 3. STARFIELD BACKGROUND ANIMATION
+        // ==========================================
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < 65; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2.2 + 0.6,
+                alpha: Math.random(),
+                speed: Math.random() * 0.015 + 0.005,
+                color: Math.random() > 0.4 ? '#f59e0b' : '#ec4899'
+            });
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0.15) star.speed = -star.speed;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = star.color;
+                ctx.globalAlpha = Math.max(0.1, Math.min(1, star.alpha));
+                ctx.fill();
+            });
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        // Helper to draw random unique cards
+        function pickRandomCards(count) {
+            const shuffled = [...fullTarotDeck].sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, count).map(card => ({
+                ...card,
+                isReversed: Math.random() < 0.25
+            }));
+        }
+
+        // Helper to render a single golden art card
+        function buildCardHTML(card, badgeLabel, autoFlip = false) {
+            return `
+                <div class="w-full max-w-[270px] perspective-1000 h-[370px] cursor-pointer group" onclick="this.querySelector('.card-inner').classList.toggle('card-flipped')">
+                    <div class="card-inner ${autoFlip ? 'card-flipped' : ''}">
+                        <!-- Back -->
+                        <div class="card-back tarot-back-pattern p-4 flex flex-col items-center justify-between text-center shadow-xl">
+                            <span class="text-xs font-bold text-amber-200 bg-purple-950/80 px-3 py-1 rounded-full border border-amber-400/50">${badgeLabel}</span>
+                            <div class="w-16 h-16 rounded-full border border-amber-300/60 flex items-center justify-center">
+                                <span class="text-2xl text-amber-300 animate-pulse">✦</span>
+                            </div>
+                            <span class="text-[11px] text-pink-200 font-medium">اضغطي لقلب البطاقة</span>
+                        </div>
+                        <!-- Front -->
+                        <div class="card-front tarot-art-frame p-4 flex flex-col justify-between text-center shadow-xl">
+                            <div>
+                                <span class="text-[11px] font-bold text-purple-800 bg-pink-100/90 px-2.5 py-0.5 rounded-full">${badgeLabel}</span>
+                                <h4 class="font-serif text-lg font-bold text-purple-950 mt-1.5 leading-tight">${card.name}</h4>
+                                <div class="text-[10px] font-bold ${card.isReversed ? 'text-rose-600' : 'text-emerald-700'}">
+                                    ${card.isReversed ? '🌙 معكوسة' : '☀️ معتدلة'}
+                                </div>
+                            </div>
+                            <div class="w-24 h-24 mx-auto my-1 ${card.isReversed ? 'rotate-180' : ''} transition-transform">
+                                ${getCardArtSVG(card)}
+                            </div>
+                            <p class="text-xs text-purple-950 leading-relaxed line-clamp-4 bg-white/75 p-2 rounded-xl border border-amber-200/70">
+                                ${card.isReversed ? card.reversed : card.upright}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ==========================================
+        // 4. FREE SECTION: CURRENT ENERGY READING
+        // ==========================================
+        document.getElementById('drawCurrentEnergyBtn').addEventListener('click', () => {
+            const cards = pickRandomCards(3);
+            const positions = ["🧠 طاقة ذهنكِ الآن", "💓 نبض قلبكِ العاطفي", "✨ رسالة الكون اللحظية"];
+            const grid = document.getElementById('currentEnergyCardsGrid');
+            const resultDiv = document.getElementById('currentEnergyResult');
+            const summaryDiv = document.getElementById('currentEnergySummary');
+
+            grid.innerHTML = cards.map((c, idx) => buildCardHTML(c, positions[idx], true)).join('');
+
+            summaryDiv.innerHTML = `
+                <h3 class="font-serif text-2xl font-bold text-amber-300 mb-2">🌟 خلاصة هالتكِ الحالية</h3>
+                <p class="text-sm sm:text-base text-purple-100 leading-relaxed">
+                    ذهنكِ يتأثر بطاقة <strong>${cards[0].name}</strong>، بينما يحمل قلبكِ ذبذبات <strong>${cards[1].name}</strong>.
+                    يرسل لكِ الكون عبر بطاقة <strong>${cards[2].name}</strong> رسالة واضحة: <em>"${cards[2].love}"</em>
+                </p>
+            `;
+
+            resultDiv.classList.remove('hidden');
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // ==========================================
+        // 5. PAID VIP SECTION: DEEP TAROT READING
+        // ==========================================
+        let selectedSpread = 'three';
+        let currentDrawnCards = [];
+
+        const spreadConfigs = {
+            three: {
+                count: 3,
+                positions: ["⏳ جذور الماضي", "🌸 طاقة الحاضر", "✨ المستقبل القريب"]
+            },
+            love: {
+                count: 5,
+                positions: ["💖 طاقتكِ أنتِ", "💫 طاقة الشريك", "🔗 رابط الروح بينكما", "⚡ التحدي الحالي", "🌹 مصير العلاقة"]
+            },
+            celtic: {
+                count: 6,
+                positions: ["🌟 جوهر الموقف", "🌊 المؤثرات الخفية", "🌱 الجذور والماضي", "☀️ الحاضر الواعي", "🦋 التطور القادم", "👑 النتيجة النهائية"]
+            }
+        };
+
+        document.querySelectorAll('.spread-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.spread-btn').forEach(b => {
+                    b.classList.remove('active-spread', 'border-2', 'border-purple-600', 'bg-gradient-to-br', 'from-pink-100', 'to-purple-100');
+                    b.classList.add('border', 'border-pink-200', 'bg-white/70');
+                });
+                btn.classList.add('active-spread', 'border-2', 'border-purple-600', 'bg-gradient-to-br', 'from-pink-100', 'to-purple-100');
+                btn.classList.remove('border', 'border-pink-200', 'bg-white/70');
+                selectedSpread = btn.dataset.spread;
+            });
+        });
+
+        function triggerShuffleAnimation() {
+            const deck = document.getElementById('visualDeck');
+            deck.classList.add('animate-shuffle');
+            setTimeout(() => deck.classList.remove('animate-shuffle'), 900);
+        }
+
+        document.getElementById('shuffleBtn').addEventListener('click', triggerShuffleAnimation);
+        document.getElementById('visualDeck').addEventListener('click', triggerShuffleAnimation);
+
+        document.getElementById('drawCardsBtn').addEventListener('click', () => {
+            triggerShuffleAnimation();
+            const config = spreadConfigs[selectedSpread];
+            const question = document.getElementById('userQuestion').value.trim() || "قراءة عامة للطاقة والمسار القادم";
+
+            currentDrawnCards = pickRandomCards(config.count);
+
+            const board = document.getElementById('drawnCardsBoard');
+            const grid = document.getElementById('cardsGrid');
+            const synthesisDiv = document.getElementById('readingSynthesis');
+            const synthesisContent = document.getElementById('readingSynthesisContent');
+            const lockOverlay = document.getElementById('deepReadingLockOverlay');
+
+            grid.innerHTML = currentDrawnCards.map((card, index) => buildCardHTML(card, config.positions[index], false)).join('');
+
+            document.getElementById('synthesisQuestionDisplay').textContent = `النية / السؤال: "${question}"`;
+            const bodyHTML = currentDrawnCards.map((c, idx) => `
+                <div class="bg-purple-900/50 p-3.5 rounded-2xl border border-purple-700/60">
+                    <div class="font-bold text-amber-300 text-sm mb-1">${config.positions[idx]} — ${c.name} (${c.isReversed ? 'معكوسة' : 'معتدلة'})</div>
+                    <p class="text-xs sm:text-sm text-purple-100">${c.isReversed ? c.reversed : c.upright} • <strong>في العاطفة:</strong> ${c.love}</p>
+                </div>
+            `).join('');
+
+            document.getElementById('synthesisBody').innerHTML = bodyHTML;
+
+            board.classList.remove('hidden');
+            synthesisDiv.classList.remove('hidden');
+
+            if (!isVipUnlocked) {
+                synthesisContent.classList.add('vip-blur-preview');
+                lockOverlay.classList.remove('hidden');
+            } else {
+                synthesisContent.classList.remove('vip-blur-preview');
+                lockOverlay.classList.add('hidden');
+            }
+
+            board.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        document.getElementById('revealAllBtn').addEventListener('click', () => {
+            document.querySelectorAll('#cardsGrid .card-inner').forEach(el => el.classList.add('card-flipped'));
+        });
+
+        // ==========================================
+        // 6. PAID VIP SECTION: THREE QUESTIONS READING
+        // ==========================================
+        document.getElementById('threeQuestionsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const q1 = document.getElementById('q1Input').value.trim();
+            const q2 = document.getElementById('q2Input').value.trim();
+            const q3 = document.getElementById('q3Input').value.trim();
+            const questions = [
+                { label: "السؤال الأول 💕", text: q1 },
+                { label: "السؤال الثاني ✨", text: q2 },
+                { label: "السؤال الثالث 🔮", text: q3 }
+            ];
+
+            const cards = pickRandomCards(3);
+            const resultDiv = document.getElementById('threeQuestionsResult');
+            const grid = document.getElementById('threeQuestionsGrid');
+            const lockOverlay = document.getElementById('threeQuestionsLockOverlay');
+
+            grid.innerHTML = cards.map((card, i) => `
+                <div class="bg-white/95 rounded-3xl p-5 border-2 border-amber-300 shadow-lg flex flex-col justify-between text-center">
+                    <div>
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-pink-100 text-pink-800">${questions[i].label}</span>
+                        <p class="text-xs font-bold text-purple-900 mt-2 mb-3 bg-purple-50 p-2 rounded-xl">"${questions[i].text}"</p>
+                        <div class="w-24 h-24 mx-auto my-2 ${card.isReversed ? 'rotate-180' : ''}">
+                            ${getCardArtSVG(card)}
+                        </div>
+                        <h4 class="font-serif text-xl font-bold text-purple-950">${card.name}</h4>
+                        <span class="text-[11px] font-bold ${card.isReversed ? 'text-rose-600' : 'text-emerald-700'}">${card.isReversed ? '🌙 معكوسة' : '☀️ معتدلة'}</span>
+                    </div>
+                    <p class="text-xs text-purple-900 leading-relaxed mt-3 bg-amber-50/80 p-3 rounded-2xl border border-amber-200">
+                        <strong>الإجابة:</strong> ${card.isReversed ? card.reversed : card.upright}
+                    </p>
+                </div>
+            `).join('');
+
+            resultDiv.classList.remove('hidden');
+
+            if (!isVipUnlocked) {
+                grid.classList.add('vip-blur-preview');
+                lockOverlay.classList.remove('hidden');
+            } else {
+                grid.classList.remove('vip-blur-preview');
+                lockOverlay.classList.add('hidden');
+            }
+
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // ==========================================
+        // 7. ARCANA MATRIX CALCULATOR & DETAILED REPORT
+        // ==========================================
+        const arcanaMeanings = {
+            1: { title: "1 — أركانا الساحر والريادة", light: "طاقة ابتكار، ثقة بالنفس، قدرة على قيادة حياتكِ وصنع الفرص من العدم.", shadow: "تشتت، تسرع، أو محاولة السيطرة على كل شيء.", love: "تنجذبين لشخص ذكي وطموح يشارككِ الشغف والحرية.", money: "نجاح كبير في المشاريع المستقلة والإبداعية." },
+            2: { title: "2 — أركانا الكاهنة والحدس", light: "دبلوماسية عالية، حدس روحاني عميق، وقدرة على فهم النفوس.", shadow: "تردد، كتمان مفرط، أو حساسية زائدة.", love: "تحتاجين لشريك صادق يقدّر عمقكِ العاطفي وهدوءكِ.", money: "الوفرة تأتيكِ عبر الاستشارات، الفن، والعمل بروح الفريق." },
+            3: { title: "3 — أركانا الإمبراطورة والوفرة", light: "أنوثة مشرقة، جمال، جاذبية، وإبداع يفيض بالخير والنجاح.", shadow: "انشغال بالمظاهر أو قلق زائد على المقربين.", love: "طاقة زواج، استقرار عائلي، وحب مليء بالاهتمام والرعاية.", money: "مغناطيس للمال والجمال ومشاريع الأزياء والتجميل." },
+            4: { title: "4 — أركانا الإمبراطور والنظام", light: "قوة شخصية، مسؤولية، تنظيم، وقدرة على بناء إمبراطورية خاصة.", shadow: "عناد، قسوة على الذات، أو صعوبة في إظهار الضعف.", love: "شريك حياتكِ يكون سنداً قوياً، ناضجاً، وصاحب كلمة.", money: "ثروة مستقرة تأتي من الإدارة والتخطيط طويل المدى." },
+            5: { title: "5 — أركانا المعلم والحكمة", light: "حب المعرفة، التزام أخلاقي، وقدرة على إلهام الآخرين.", shadow: "تمسك مفرط بالقواعد أو انتقاد الذات.", love: "علاقة مبنية على الاحترام، الوضوح، والتوافق الفكري والروحي.", money: "نجاح في التعليم، التدريب، القانون، والعمل المؤسسي." },
+            6: { title: "6 — أركانا العشاق والجمال", light: "قلب محب، ذوق رفيع، اجتماعية ساحرة، وقدرة على خلق الانسجام.", shadow: "حيرة في اتخاذ القرارات العاطفية أو البحث عن الكمال.", love: "قصة حب رومانسية حقيقية وتناغم روحي عالٍ.", money: "الرزق يأتيكِ عبر العلاقات الاجتماعية والفنون." },
+            7: { title: "7 — أركانا العربة والانتصار", light: "حركة دائمة، طموح لا يتوقف، سفر، وتحقيق الأهداف بسرعة.", shadow: "عصبية أو استعجال النتائج قبل أوانها.", love: "شريك نشيط وطموح يدفعكِ للأمام وتجمعهما رحلات وتجارب.", money: "أرباح سريعة من التجارة، السفر، والتنقل." },
+            8: { title: "8 — أركانا العدالة والتوازن", light: "إنصاف، وضوح، فهم عميق لقوانين السبب والنتيجة (الكارما).", shadow: "لوم النفس أو الدخول في جدالات لإثبات الحق.", love: "توازن تام في العطاء والأخذ، وشريك عادل ومخلص.", money: "نجاح في العقود، المحاسبة، والمشاريع القانونية." },
+            9: { title: "9 — أركانا الحكيم والعمق", light: "حكمة فطرية، اكتفاء ذاتي، وعمق فكري يجعلكِ ملاذاً لمن حولكِ.", shadow: "انعزال أو خوف من فتح القلب بسهولة.", love: "حب عميق وهادئ بعيد عن السطحية، يقوم على الثقة المطلقة.", money: "الوفرة تأتي من الخبرة المتخصصة والبحث والكتابة." },
+            10: { title: "10 — أركانا عجلة الحظ والتدفق", light: "حظ سعيد يرافقكِ، انسيابية في الحياة، وفرص تأتي في الوقت المناسب.", shadow: "كسل أو اعتماد كلي على الحظ دون مبادرة.", love: "لقاء قدري مميز يفتح لكِ أبواب السعادة العاطفية.", money: "تدفق مالي مفاجئ وفرص استثمارية رابحة." },
+            11: { title: "11 — أركانا القوة والشغف", light: "طاقة حيوية هائلة، شجاعة، وقدرة على تجاوز أي محنة بابتسامة.", shadow: "اندفاع أو فرض الرأي بقوة.", love: "انجذاب قوي وعلاقة مليئة بالحيوية والدعم المتبادل.", money: "قدرة عالية على مضاعفة الدخل بفضل مثابرتكِ." },
+            12: { title: "12 — أركانا الرؤية الجديدة والرحمة", light: "قلب رحيم، إبداع خارج الصندوق، وخدمة إنسانية راقية.", shadow: "التضحية الزائدة على حساب نفسكِ.", love: "حب نقي وغير مشروط، مع ضرورة وضع حدود صحية.", money: "نجاح في المجالات الإبداعية، العلاجية، والإنسانية." },
+            13: { title: "13 — أركانا التحول والتجدد", light: "قدرة مذهلة على النهوض أقوى بعد كل مرحلة، وجرأة في التجديد.", shadow: "تقلبات حادة أو صعوبة في تقبل البطء.", love: "علاقة تغير حياتكِ للأفضل وتمنحكِ نضجاً عاطفياً كبيراً.", money: "أرباح من المشاريع الحديثة والتحولات الكبرى." },
+            14: { title: "14 — أركانا الاعتدال والفن", light: "روح فنية رقيقة، صبر، وانسجام مع الطبيعة والجمال.", shadow: "حساسية مفرطة أو تأجيل القرارات.", love: "علاقة هادئة ومستقرة تشبه الصداقة العميقة والحب الصادق.", money: "وفرة متوازنة ومستمرة تزداد بالصبر والإتقان." },
+            15: { title: "15 — أركانا الجاذبية والكاريزما", light: "كاريزما لا تُقاوم، ذكاء اجتماعي، وقدرة على قراءة نوايا الناس.", shadow: "تعلق عاطفي أو مادي مفرط.", love: "شغف عاطفي قوي وجاذبية استثنائية بينكِ وبين شريككِ.", money: "طاقة ثراء عالية ونجاح في الأعمال الكبيرة." },
+            16: { title: "16 — أركانا الصحوة والبناء", light: "قوة روحية عالية، بناء جديد على أسس صادقة، وتحرر من الأوهام.", shadow: "مقاومة التغيير أو التوتر المفاجئ.", love: "حب حقيقي يكسر كل الحواجز التقليدية ويمنحكِ الحرية.", money: "نجاح في العقارات، التصميم، وإعادة الهيكلة." },
+            17: { title: "17 — أركانا النجمة والإلهام", light: "بريق خاص، موهبة فنية، تفاؤل، وحماية سماوية واضحة.", shadow: "أحلام يقظة بعيدة عن التنفيذ العملي.", love: "حب نقي ومشرق يجعلكِ تشعرين بأنكِ نجمة في عين شريككِ.", money: "شهرة ونجاح في الفنون، الإعلام، ومواقع التواصل." },
+            18: { title: "18 — أركانا القمر والخيال", light: "خيال خصب، قدرة على التجلي السريع، وأنوثة غامضة ساحرة.", shadow: "مخاوف وهمية أو تقلب المزاج مع أطوار القمر.", love: "رابط روحي وحدسي قوي جداً مع توأم روحكِ.", money: "الوفرة تأتي عندما تثقين بحدسكِ وأفكاركِ الإبداعية." },
+            19: { title: "19 — أركانا الشمس والنجاح", light: "إشراق، كرم، فرح، وقيادة ملهمة تجلب السعادة للجميع.", shadow: "حرق الطاقة في محاولة إرضاء الجميع.", love: "زواج سعيد وعائلة دافئة مليئة بالحب والبهجة.", money: "نجاح باهر ووفرة مالية واسعة ومباركة." },
+            20: { title: "20 — أركانا البعث والعائلة", light: "ارتباط عميق بالجذور، حدس قوي، ورسالة لتطوير الذات والأسرة.", shadow: "انتقاد المحيطين أو التعلق بأخطاء الماضي.", love: "شريك يقدّر العائلة ويبني معكِ بيتاً مستقراً ومترابطاً.", money: "نجاح في الأعمال العائلية والمشاريع طويلة الأمد." },
+            21: { title: "21 — أركانا العالم والانفتاح", light: "روح عالمية، سلام داخلي، حب السفر، وقدرة على توحيد القلوب.", shadow: "تشتت بين أكثر من هدف في وقت واحد.", love: "علاقة منفتحة، راقية، وربما ارتباط من ثقافة أو مدينة مختلفة.", money: "وفرة بلا حدود عبر الإنترنت، السفر، والتوسع العالمي." },
+            22: { title: "22 — أركانا الحرية المطلقة", light: "روح حرة، خفة ظل، إبداع بلا قيود، وبدايات جديدة دائماً.", shadow: "عدم الالتزام أو التسرع في القرارات.", love: "حب يقوم على الصداقة والحرية والمرح المشترك.", money: "نجاح في المشاريع المبتكرة والأعمال الحرة." }
+        };
+
+        function reduceToArcana22(num) {
+            let n = Math.abs(parseInt(num, 10)) || 1;
+            while (n > 22) {
+                n = String(n).split('').reduce((acc, d) => acc + parseInt(d, 10), 0);
+            }
+            return n === 0 ? 22 : n;
+        }
+
+        function calculateArcanaProfile(dateStr) {
+            const parts = dateStr.split('-');
+            const year = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10);
+            const day = parseInt(parts[2], 10);
+
+            const yearSum = String(year).split('').reduce((a, b) => a + parseInt(b, 10), 0);
+
+            const left = reduceToArcana22(day);          // Soul Essence
+            const top = reduceToArcana22(month);         // Spiritual Talent
+            const right = reduceToArcana22(yearSum);     // Money & Material
+            const bottom = reduceToArcana22(left + top + right); // Karmic Lesson
+            const center = reduceToArcana22(left + top + right + bottom); // Core Comfort Zone
+
+            return { left, top, right, bottom, center };
+        }
+
+        document.getElementById('arcanaForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('arcanaName').value.trim() || "صاحبة الخريطة";
+            const dateStr = document.getElementById('arcanaBirthDate').value;
+            if (!dateStr) return;
+
+            const profile = calculateArcanaProfile(dateStr);
+
+            document.getElementById('arcanaTitleDisplay').textContent = `✡️ نجمة أركانا الخاصة بـ ${name}`;
+            document.getElementById('arcNodeLeft').textContent = profile.left;
+            document.getElementById('arcNodeTop').textContent = profile.top;
+            document.getElementById('arcNodeRight').textContent = profile.right;
+            document.getElementById('arcNodeBottom').textContent = profile.bottom;
+            document.getElementById('arcNodeCenter').textContent = profile.center;
+
+            const coreInfo = arcanaMeanings[profile.center];
+            const soulInfo = arcanaMeanings[profile.left];
+            const moneyInfo = arcanaMeanings[profile.right];
+            const talentInfo = arcanaMeanings[profile.top];
+
+            const detailedBox = document.getElementById('arcanaDetailedBox');
+            const detailedContent = document.getElementById('arcanaDetailedContent');
+            const lockOverlay = document.getElementById('arcanaLockOverlay');
+
+            detailedContent.innerHTML = `
+                <h4 class="font-serif text-2xl font-bold text-purple-950 border-b border-pink-200 pb-2">📜 التحليل المعمق لمصفوفة أركانا (${name})</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                    <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200">
+                        <div class="font-bold text-purple-950 mb-1">👑 مركز القوة (أركانا ${profile.center}): ${coreInfo.title}</div>
+                        <p class="text-purple-800"><strong>طاقة النور:</strong> ${coreInfo.light}</p>
+                        <p class="text-rose-700 mt-1"><strong>طاقة الظل:</strong> ${coreInfo.shadow}</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-pink-50 border border-pink-200">
+                        <div class="font-bold text-pink-950 mb-1">🌸 جوهر الروح (أركانا ${profile.left}): ${soulInfo.title}</div>
+                        <p class="text-purple-800">${soulInfo.light}</p>
+                        <p class="text-pink-800 mt-1"><strong>في الحب:</strong> ${soulInfo.love}</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200">
+                        <div class="font-bold text-amber-950 mb-1">✨ الموهبة السماوية (أركانا ${profile.top}): ${talentInfo.title}</div>
+                        <p class="text-purple-800">${talentInfo.light}</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
+                        <div class="font-bold text-emerald-950 mb-1">💰 بوابة المال والوفرة (أركانا ${profile.right}): ${moneyInfo.title}</div>
+                        <p class="text-purple-800">${moneyInfo.money}</p>
+                    </div>
+                </div>
+            `;
+
+            detailedBox.classList.remove('hidden');
+
+            if (!isVipUnlocked) {
+                detailedContent.classList.add('vip-blur-preview');
+                lockOverlay.classList.remove('hidden');
+            } else {
+                detailedContent.classList.remove('vip-blur-preview');
+                lockOverlay.classList.add('hidden');
+            }
+        });
+
+        // ==========================================
+        // 8. PAID VIP SECTION: FUTURE HUSBAND READING
+        // ==========================================
+        document.getElementById('futureHusbandForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('fhName').value.trim();
+            const dateStr = document.getElementById('fhBirthDate').value;
+            if (!dateStr) return;
+
+            const arcana = calculateArcanaProfile(dateStr);
+            const sunSign = getZodiacSign(dateStr);
+            const cards = pickRandomCards(4);
+            const labels = ["👤 شخصيته وحضوره", "💓 أسلوبه في الحب", "✨ كيف ستلتقيان", "🏡 حياتكما الزوجية"];
+
+            const cardsGrid = document.getElementById('fhCardsGrid');
+            const reportDiv = document.getElementById('fhDetailedReport');
+            const resultSection = document.getElementById('futureHusbandResult');
+            const lockOverlay = document.getElementById('futureHusbandLockOverlay');
+
+            cardsGrid.innerHTML = cards.map((c, idx) => `
+                <div class="bg-white/95 rounded-2xl p-4 border border-amber-300 shadow text-center">
+                    <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800">${labels[idx]}</span>
+                    <div class="w-20 h-20 mx-auto my-2 ${c.isReversed ? 'rotate-180' : ''}">${getCardArtSVG(c)}</div>
+                    <h4 class="font-serif text-lg font-bold text-purple-950">${c.name}</h4>
+                    <p class="text-xs text-purple-800 mt-1.5 leading-relaxed">${c.love}</p>
+                </div>
+            `).join('');
+
+            const loveArcanaInfo = arcanaMeanings[arcana.left];
+            reportDiv.innerHTML = `
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-amber-300 border-b border-purple-700 pb-3">💍 التقرير الشامل لزوج المستقبل لـ (${name})</h3>
+                <p class="text-sm sm:text-base text-purple-100 leading-relaxed">
+                    بناءً على برجكِ الشمسي (<strong>${sunSign.name}</strong>) وأركانا الحب والروح الخاصة بكِ (<strong>رقم ${arcana.left}</strong>)، فإن زوج المستقبل يحمل طاقة تجمع بين <strong>${cards[0].name}</strong> و<strong>${cards[1].name}</strong>.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                    <div class="bg-purple-900/60 p-4 rounded-2xl border border-pink-400/40">
+                        <div class="font-bold text-pink-300 mb-1">💫 صفاته الجوهرية وأسلوب حبه:</div>
+                        <p class="text-purple-100">${loveArcanaInfo.love} يظهر في حياتكِ بطاقة ${cards[1].name} ليعبر عن مشاعره بأفعال واضحة واهتمام حقيقي.</p>
+                    </div>
+                    <div class="bg-purple-900/60 p-4 rounded-2xl border border-amber-400/40">
+                        <div class="font-bold text-amber-300 mb-1">🌟 ظروف اللقاء وبناء المستقبل:</div>
+                        <p class="text-purple-100">تشير بطاقة <strong>${cards[2].name}</strong> إلى أن اللقاء يتم في فترة تجدد طاقي، وتُتوّج العلاقة بطاقة <strong>${cards[3].name}</strong> التي تبشر بالاستقرار والسكينة.</p>
+                    </div>
+                </div>
+            `;
+
+            resultSection.classList.remove('hidden');
+
+            if (!isVipUnlocked) {
+                cardsGrid.classList.add('vip-blur-preview');
+                reportDiv.classList.add('vip-blur-preview');
+                lockOverlay.classList.remove('hidden');
+            } else {
+                cardsGrid.classList.remove('vip-blur-preview');
+                reportDiv.classList.remove('vip-blur-preview');
+                lockOverlay.classList.add('hidden');
+            }
+
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // ==========================================
+        // 9. FREE SECTION: ASTROLOGY & BIRTH CHART
+        // ==========================================
+        const zodiacSigns = [
+            { name: "الحمل ♈", en: "Aries", element: "ناري 🔥", start: [3, 21], end: [4, 19], desc: "قيادية، جريئة، مليئة بالشغف والمبادرة." },
+            { name: "الثور ♉", en: "Taurus", element: "ترابي 🌿", start: [4, 20], end: [5, 20], desc: "محبة للجمال والوفرة، مخلصة، وتبحث عن الأمان." },
+            { name: "الجوزاء ♊", en: "Gemini", element: "هوائي 🌬️", start: [5, 21], end: [6, 20], desc: "ذكية، فضولية، ساحرة في الحديث، وسريعة البديهة." },
+            { name: "السرطان ♋", en: "Cancer", element: "مائي 💧", start: [6, 21], end: [7, 22], desc: "حدسية، حنونة، عميقة المشاعر، وتعتني بمن تحب." },
+            { name: "الأسد ♌", en: "Leo", element: "ناري 🔥", start: [7, 23], end: [8, 22], desc: "ملكية، دافئة، مبدعة، وتنشر البهجة أينما حلت." },
+            { name: "العذراء ♍", en: "Virgo", element: "ترابي 🌿", start: [8, 23], end: [9, 22], desc: "دقيقة، حكيمة، محللة بارعة، وتحب الإتقان." },
+            { name: "الميزان ♎", en: "Libra", element: "هوائي 🌬️", start: [9, 23], end: [10, 22], desc: "أنيقة، دبلوماسية، عاشقة للسلام والرومانسية." },
+            { name: "العقرب ♏", en: "Scorpio", element: "مائي 💧", start: [10, 23], end: [11, 21], desc: "غامضة، قوية الإرادة، عميقة الروح، وصاحبة حدس نافذ." },
+            { name: "القوس ♐", en: "Sagittarius", element: "ناري 🔥", start: [11, 22], end: [12, 21], desc: "متفائلة، محبة للحرية والسفر واكتشاف الحكمة." },
+            { name: "الجدي ♑", en: "Capricorn", element: "ترابي 🌿", start: [12, 22], end: [1, 19], desc: "طموحة، صبورة، ناجحة، وتبني مجدها بثبات." },
+            { name: "الدلو ♒", en: "Aquarius", element: "هوائي 🌬️", start: [1, 20], end: [2, 18], desc: "مستقلة، مبتكرة، إنسانية، وتسبق عصرها بأفكارها." },
+            { name: "الحوت ♓", en: "Pisces", element: "مائي 💧", start: [2, 19], end: [3, 20], desc: "حالمة، فنانة، روحانية، وتفيض بالرحمة والخيال." }
+        ];
+
+        function getZodiacSign(dateStr) {
+            const parts = dateStr.split('-');
+            const m = parseInt(parts[1], 10);
+            const d = parseInt(parts[2], 10);
+            for (let s of zodiacSigns) {
+                if ((m === s.start[0] && d >= s.start[1]) || (m === s.end[0] && d <= s.end[1])) {
+                    return s;
+                }
+            }
+            return zodiacSigns[9];
+        }
+
+        function drawNatalWheel(sunIdx, moonIdx, risingIdx) {
+            const spokesG = document.getElementById('wheelSpokes');
+            const planetsG = document.getElementById('wheelPlanets');
+            spokesG.innerHTML = '';
+            planetsG.innerHTML = '';
+
+            const symbols = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30 - 90) * (Math.PI / 180);
+                const x1 = 200 + 95 * Math.cos(angle);
+                const y1 = 200 + 95 * Math.sin(angle);
+                const x2 = 200 + 190 * Math.cos(angle);
+                const y2 = 200 + 190 * Math.sin(angle);
+
+                spokesG.innerHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="rgba(253,224,71,0.28)" stroke-width="1"/>`;
+
+                const textAngle = ((i * 30 + 15) - 90) * (Math.PI / 180);
+                const tx = 200 + 172 * Math.cos(textAngle);
+                const ty = 200 + 172 * Math.sin(textAngle) + 5;
+                spokesG.innerHTML += `<text x="${tx}" y="${ty}" text-anchor="middle" fill="#fde047" font-size="14">${symbols[i]}</text>`;
+            }
+
+            const markers = [
+                { idx: sunIdx, icon: "☀️", color: "#facc15", r: 125 },
+                { idx: moonIdx, icon: "🌙", color: "#f472b6", r: 110 },
+                { idx: risingIdx, icon: "⬆️", color: "#38bdf8", r: 70 }
+            ];
+
+            markers.forEach(m => {
+                const a = ((m.idx * 30 + 15) - 90) * (Math.PI / 180);
+                const px = 200 + m.r * Math.cos(a);
+                const py = 200 + m.r * Math.sin(a);
+                planetsG.innerHTML += `
+                    <circle cx="${px}" cy="${py}" r="14" fill="#3b0764" stroke="${m.color}" stroke-width="2"/>
+                    <text x="${px}" y="${py + 5}" text-anchor="middle" font-size="12">${m.icon}</text>
+                `;
+            });
+        }
+        drawNatalWheel(0, 3, 6);
+
+        document.getElementById('astrologyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('astroName').value.trim() || "نجمتنا";
+            const dateStr = document.getElementById('birthDate').value;
+            const timeStr = document.getElementById('birthTime').value || "12:00";
+            const city = document.getElementById('birthCity').value.trim() || "العالم";
+
+            if (!dateStr) return;
+
+            const sunSign = getZodiacSign(dateStr);
+            const sunIdx = zodiacSigns.indexOf(sunSign);
+
+            const parts = dateStr.split('-');
+            const dayNum = parseInt(parts[2], 10);
+            const monthNum = parseInt(parts[1], 10);
+            const hourNum = parseInt(timeStr.split(':')[0], 10) || 12;
+
+            const moonIdx = (sunIdx + dayNum + monthNum) % 12;
+            const risingIdx = (sunIdx + Math.floor(hourNum / 2)) % 12;
+
+            const moonSign = zodiacSigns[moonIdx];
+            const risingSign = zodiacSigns[risingIdx];
+
+            document.getElementById('chartTitleDisplay').textContent = `🌌 الخريطة الفلكية لـ ${name}`;
+            document.getElementById('chartSubtitleDisplay').textContent = `تاريخ الميلاد: ${dateStr} • الساعة: ${timeStr} • ${city}`;
+
+            document.getElementById('sunSignName').textContent = sunSign.name;
+            document.getElementById('sunSignDesc').textContent = `${sunSign.element} — ${sunSign.desc}`;
+
+            document.getElementById('moonSignName').textContent = moonSign.name;
+            document.getElementById('moonSignDesc').textContent = `عالمكِ الداخلي يتسم بصفات ${moonSign.name}: ${moonSign.desc}`;
+
+            document.getElementById('risingSignName').textContent = risingSign.name;
+            document.getElementById('risingSignDesc').textContent = `الانطباع الأول وطاقتكِ الظاهرة للناس هي طاقة ${risingSign.name}.`;
+
+            drawNatalWheel(sunIdx, moonIdx, risingIdx);
+
+            // Elements Balance
+            const elementsCount = { "ناري 🔥": 15, "ترابي 🌿": 15, "هوائي 🌬️": 15, "مائي 💧": 15 };
+            elementsCount[sunSign.element] += 20;
+            elementsCount[moonSign.element] += 12;
+            elementsCount[risingSign.element] += 8;
+
+            const elementsGrid = document.getElementById('elementsGrid');
+            elementsGrid.innerHTML = Object.entries(elementsCount).map(([elName, pct]) => `
+                <div class="p-3 rounded-2xl bg-pink-50/70 border border-pink-200">
+                    <div class="font-bold text-sm text-purple-950">${elName}</div>
+                    <div class="text-lg font-extrabold text-pink-600 mt-1">${pct}%</div>
+                </div>
+            `).join('');
+
+            document.getElementById('astroResultsContainer').classList.remove('hidden');
+        });
+
+        // ==========================================
+        // 10. ENCYCLOPEDIA GRID & CARD MODAL (78 CARDS)
+        // ==========================================
+        const encyclopediaGrid = document.getElementById('encyclopediaGrid');
+        const cardSearchInput = document.getElementById('cardSearchInput');
+        let currentSuitFilter = 'all';
+
+        function renderEncyclopedia() {
+            const query = cardSearchInput.value.trim().toLowerCase();
+            const filtered = fullTarotDeck.filter(card => {
+                const matchesSuit = currentSuitFilter === 'all' || card.suit === currentSuitFilter;
+                const matchesSearch = !query || card.name.toLowerCase().includes(query) || card.en.toLowerCase().includes(query);
+                return matchesSuit && matchesSearch;
+            });
+
+            encyclopediaGrid.innerHTML = filtered.map(card => `
+                <div onclick="openCardDetails(${card.id})" class="tarot-art-frame rounded-2xl p-3 text-center cursor-pointer hover:-translate-y-1.5 hover:shadow-xl transition-all flex flex-col justify-between">
+                    <div class="text-[10px] font-bold text-amber-800">${card.num}</div>
+                    <div class="w-16 h-16 mx-auto my-1.5">
+                        ${getCardArtSVG(card)}
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-sm font-bold text-purple-950 leading-snug">${card.name}</h4>
+                        <span class="block text-[9px] text-purple-600 mt-0.5">${card.en}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.querySelectorAll('.suit-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.suit-filter-btn').forEach(b => {
+                    b.classList.remove('active-suit', 'bg-purple-800', 'text-white');
+                    b.classList.add('bg-white', 'text-purple-900', 'border', 'border-pink-200');
+                });
+                btn.classList.add('active-suit', 'bg-purple-800', 'text-white');
+                btn.classList.remove('bg-white', 'text-purple-900', 'border', 'border-pink-200');
+                currentSuitFilter = btn.dataset.suit;
+                renderEncyclopedia();
+            });
+        });
+
+        cardSearchInput.addEventListener('input', renderEncyclopedia);
+
+        function openCardDetails(cardId) {
+            const card = fullTarotDeck.find(c => c.id === cardId);
+            if (!card) return;
+            document.getElementById('modalCardArt').innerHTML = getCardArtSVG(card);
+            document.getElementById('modalCardSuit').textContent = card.suitAr;
+            document.getElementById('modalCardName').textContent = card.name;
+            document.getElementById('modalCardEnName').textContent = card.en;
+            document.getElementById('modalCardUpright').textContent = card.upright;
+            document.getElementById('modalCardReversed').textContent = card.reversed;
+            document.getElementById('modalCardLove').textContent = card.love;
+
+            const modal = document.getElementById('cardModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            const modal = document.getElementById('cardModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+
+        document.getElementById('cardModal').addEventListener('click', (e) => {
+            if (e.target.id === 'cardModal') {
+                e.target.classList.add('hidden');
+                e.target.classList.remove('flex');
+            }
+        });
+
+        document.getElementById('vipUnlockModal').addEventListener('click', (e) => {
+            if (e.target.id === 'vipUnlockModal') {
+                closeVipModal();
+            }
+        });
+
+        // Initialize UI on Load
+        updateVipUIState();
+        renderEncyclopedia();
+    </script>
+
+    <!-- Cloud Session Persistence, Payment Verification Queue & Owner Settings Sync -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const customFirebaseConfig = {
+            apiKey: "AIzaSyDmMGVyQS0LhC76-h-U-i2Bq7YJx9z3JHQ",
+            authDomain: "aura-wameed.firebaseapp.com",
+            projectId: "aura-wameed",
+            storageBucket: "aura-wameed.firebasestorage.app",
+            messagingSenderId: "47195226731",
+            appId: "1:47195226731:web:ed7c7987e0a20c5b25672e",
+            measurementId: "G-CWSRC03XZC"
+        };
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : customFirebaseConfig;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'aura-wameed';
+
+        if (firebaseConfig) {
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+
+            let currentUserId = null;
+            let ownerSettings = {
+                paymentUrl: "",
+                beneficiary: "أورا وميض"
+            };
+
+            window.applyMasterCardDisplay = function() {
+                try {
+                    const benEl = document.getElementById('ownerBeneficiaryDisplay');
+                    const payBtn = document.getElementById('masterPayActionBtn');
+                    const masterNumEl = document.getElementById('ownerMasterNumberDisplay');
+                    const noticeEl = document.getElementById('payLinkNotice');
+                    const cfgUrlInput = document.getElementById('cfgMasterCard');
+                    const cfgBenInput = document.getElementById('cfgBeneficiary');
+
+                    if (benEl) {
+                        benEl.textContent = ownerSettings.beneficiary && String(ownerSettings.beneficiary).trim()
+                            ? String(ownerSettings.beneficiary).trim()
+                            : "أورا وميض";
+                    }
+
+                    const bottomPrivateEl = document.getElementById('ownerPrivateMasterCardBottomInput');
+                    const bottomPrivateVal = bottomPrivateEl ? String(bottomPrivateEl.value).trim() : "";
+                    const cleanVal = (ownerSettings.paymentUrl && String(ownerSettings.paymentUrl).trim())
+                        ? String(ownerSettings.paymentUrl).trim()
+                        : bottomPrivateVal;
+                    const isHttpUrl = cleanVal && /^https?:\/\//i.test(cleanVal);
+
+                    if (masterNumEl) {
+                        masterNumEl.textContent = cleanVal;
+                    }
+
+                    if (payBtn) {
+                        if (isHttpUrl) {
+                            payBtn.href = cleanVal;
+                            payBtn.target = '_blank';
+                            payBtn.rel = 'noopener noreferrer';
+                        } else {
+                            payBtn.href = 'javascript:void(0)';
+                            payBtn.removeAttribute('target');
+                        }
+                    }
+
+                    if (noticeEl) {
+                        noticeEl.classList.add('hidden');
+                    }
+
+                    if (cfgUrlInput && !cfgUrlInput.value && cleanVal) {
+                        cfgUrlInput.value = cleanVal;
+                    }
+                    if (cfgBenInput && !cfgBenInput.value && ownerSettings.beneficiary) {
+                        cfgBenInput.value = ownerSettings.beneficiary;
+                    }
+                } catch (err) {
+                    console.error('applyMasterCardDisplay error:', err);
+                }
+            };
+
+            const applyMasterCardDisplay = window.applyMasterCardDisplay;
+
+            // Verify Customer MasterCard Number -> Submit for Owner Verification upon receiving payment
+            const verifyMasterPaymentBtn = document.getElementById('verifyMasterPaymentBtn');
+            if (verifyMasterPaymentBtn) {
+                verifyMasterPaymentBtn.addEventListener('click', async () => {
+                    const cardInput = document.getElementById('customerMasterCardInput');
+                    const msg = document.getElementById('vipCodeMsg');
+                    const cardVal = cardInput ? cardInput.value.replace(/\s+/g, '').trim() : '';
+
+                    if (cardVal.length < 6) {
+                        if (msg) {
+                            msg.textContent = "⚠️ يرجى إدخال رقم بطاقة الماستر كارد الخاصة بكِ ثم الضغط على دفع";
+                            msg.className = "text-xs font-bold text-rose-600 block text-center mb-2";
+                        }
+                        return;
+                    }
+
+                    if (typeof window.submitPaymentForReview === 'function') {
+                        await window.submitPaymentForReview('ماستر كارد (5,000 د.ع)', `بطاقة الزبونة: ${cardVal}`);
+                    }
+                });
+            }
+
+            // Submit customer payment (Asiacell PIN or MasterCard info) as Pending for Owner verification
+            window.submitPaymentForReview = async (method, referenceValue) => {
+                const msg = document.getElementById('vipCodeMsg');
+                const banner = document.getElementById('pendingPaymentBanner');
+                const badgeEl = document.getElementById('pendingOrderBadge');
+                const detailsEl = document.getElementById('pendingOrderDetailsText');
+
+                const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+                const uid = currentUserId || ('guest_' + Date.now());
+
+                if (banner && badgeEl && detailsEl) {
+                    banner.classList.remove('hidden');
+                    badgeEl.textContent = `رقم الطلب: ${orderId}`;
+                    detailsEl.textContent = `تم إرسال بيانات الدفع (${method} — ${referenceValue}) إلى إدارة أورا وميض للتحقق الفوري.`;
+                }
+                if (msg) {
+                    msg.textContent = "⏳ تم إرسال طلب الدفع للمراجعة! لا يمكن التفعيل بأرقام غير مؤكدة، وسيفتح حسابكِ فور التحقق.";
+                    msg.className = "text-xs font-bold text-amber-700 block text-center";
+                }
+
+                try {
+                    const pendingRef = doc(db, 'artifacts', appId, 'public', 'data', 'pending_payments', uid);
+                    await setDoc(pendingRef, {
+                        uid,
+                        orderId,
+                        method,
+                        referenceValue,
+                        status: 'pending',
+                        createdAt: new Date().toISOString()
+                    });
+                } catch (err) {
+                    console.error('Submit pending payment error:', err);
+                }
+            };
+
+            // Owner: Load & Approve/Reject Pending Payments
+            window.loadOwnerPendingPayments = async () => {
+                const listEl = document.getElementById('ownerPendingPaymentsList');
+                if (!listEl) return;
+                listEl.innerHTML = '<div class="text-purple-300 text-center py-2">جاري تحميل الطلبات...</div>';
+
+                try {
+                    const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'pending_payments');
+                    const snap = await getDocs(colRef);
+                    const pendingItems = [];
+                    snap.forEach(d => {
+                        const data = d.data();
+                        if (data && data.status === 'pending') {
+                            pendingItems.push(data);
+                        }
+                    });
+
+                    if (pendingItems.length === 0) {
+                        listEl.innerHTML = '<div class="text-purple-300 text-center py-2">لا توجد طلبات معلقة حالياً.</div>';
+                        return;
+                    }
+
+                    pendingItems.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+
+                    listEl.innerHTML = pendingItems.map(item => `
+                        <div class="p-2.5 rounded-xl bg-purple-950 border border-purple-700 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-amber-300">${item.orderId || 'طلب'}</span>
+                                <span class="text-[10px] text-pink-300">${item.method || ''}</span>
+                            </div>
+                            <div class="font-mono text-xs text-white bg-purple-900 px-2 py-1 rounded select-all text-center" dir="ltr">${item.referenceValue || ''}</div>
+                            <div class="flex gap-1.5 pt-1">
+                                <button type="button" onclick="window.approveCustomerPayment('${item.uid}')" class="flex-1 py-1 rounded-lg bg-emerald-500 text-white font-bold text-[11px] hover:bg-emerald-600 cursor-pointer">✅ اعتماد وتفعيل</button>
+                                <button type="button" onclick="window.rejectCustomerPayment('${item.uid}')" class="px-2.5 py-1 rounded-lg bg-rose-600 text-white font-bold text-[11px] hover:bg-rose-700 cursor-pointer">✕ رفض</button>
+                            </div>
+                        </div>
+                    `).join('');
+                } catch (err) {
+                    console.error('Load pending payments error:', err);
+                    listEl.innerHTML = '<div class="text-rose-300 text-center py-2">تعذر جلب الطلبات حالياً.</div>';
+                }
+            };
+
+            window.approveCustomerPayment = async (targetUid) => {
+                if (!targetUid) return;
+                try {
+                    const pendingRef = doc(db, 'artifacts', appId, 'public', 'data', 'pending_payments', targetUid);
+                    await setDoc(pendingRef, { status: 'approved', approvedAt: new Date().toISOString() }, { merge: true });
+
+                    const userVipRef = doc(db, 'artifacts', appId, 'users', targetUid, 'profile', 'membership');
+                    await setDoc(userVipRef, { isVip: true, unlockedAt: new Date().toISOString() }, { merge: true });
+
+                    await window.loadOwnerPendingPayments();
+                } catch (err) {
+                    console.error('Approve payment error:', err);
+                }
+            };
+
+            window.rejectCustomerPayment = async (targetUid) => {
+                if (!targetUid) return;
+                try {
+                    const pendingRef = doc(db, 'artifacts', appId, 'public', 'data', 'pending_payments', targetUid);
+                    await setDoc(pendingRef, { status: 'rejected', rejectedAt: new Date().toISOString() }, { merge: true });
+                    await window.loadOwnerPendingPayments();
+                } catch (err) {
+                    console.error('Reject payment error:', err);
+                }
+            };
+
+            document.getElementById('refreshPendingPaymentsBtn')?.addEventListener('click', () => {
+                window.loadOwnerPendingPayments();
+            });
+
+            // Sync customer VIP status to Firestore so they never pay twice
+            window.syncVipToCloud = async (vipStatus, ownerStatus = false) => {
+                if (!currentUserId) return;
+                try {
+                    const userDocRef = doc(db, 'artifacts', appId, 'users', currentUserId, 'profile', 'membership');
+                    await setDoc(userDocRef, {
+                        isVip: Boolean(vipStatus),
+                        isOwner: Boolean(ownerStatus),
+                        updatedAt: new Date().toISOString()
+                    }, { merge: true });
+                } catch (err) {
+                    console.error('Cloud membership sync error:', err);
+                }
+            };
+
+            // Save Owner Payment Link & Beneficiary
+            async function persistOwnerConfig() {
+                const newPaymentUrl = document.getElementById('cfgMasterCard')?.value.trim() || "";
+                const newBen = document.getElementById('cfgBeneficiary')?.value.trim() || "أورا وميض";
+
+                ownerSettings.paymentUrl = newPaymentUrl;
+                ownerSettings.beneficiary = newBen;
+                localStorage.setItem('aura_owner_settings', JSON.stringify(ownerSettings));
+                applyMasterCardDisplay();
+
+                const msg = document.getElementById('vipCodeMsg');
+                if (msg) {
+                    msg.textContent = "✅ تم حفظ رابط الدفع واسم المستلم وتحديثه لجميع الزبائن!";
+                    msg.className = "text-xs font-bold text-emerald-600 block text-center";
+                }
+
+                try {
+                    const cfgRef = doc(db, 'artifacts', appId, 'public', 'data', 'store_config', 'settings');
+                    await setDoc(cfgRef, ownerSettings, { merge: true });
+                } catch (err) {
+                    console.error('Save owner config error:', err);
+                }
+            }
+
+            document.getElementById('saveOwnerConfigBtn')?.addEventListener('click', persistOwnerConfig);
+
+            // Load cached settings immediately
+            const cachedSettings = localStorage.getItem('aura_owner_settings');
+            if (cachedSettings) {
+                try {
+                    ownerSettings = { ...ownerSettings, ...JSON.parse(cachedSettings) };
+                    applyMasterCardDisplay();
+                } catch (e) {}
+            } else {
+                applyMasterCardDisplay();
+            }
+
+            // Initialize Auth & Restore Customer Session + Live Owner Settings
+            async function initCloudSession() {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (err) {
+                    console.error('Auth error:', err);
+                }
+
+                onAuthStateChanged(auth, async (user) => {
+                    if (!user) return;
+                    currentUserId = user.uid;
+
+                    // Listen to live store configuration (MasterCard Payment Link)
+                    const cfgRef = doc(db, 'artifacts', appId, 'public', 'data', 'store_config', 'settings');
+                    onSnapshot(cfgRef, (snap) => {
+                        if (snap.exists()) {
+                            ownerSettings = { ...ownerSettings, ...snap.data() };
+                            localStorage.setItem('aura_owner_settings', JSON.stringify(ownerSettings));
+                            applyMasterCardDisplay();
+                        }
+                    });
+
+                    // Listen to Customer Pending Payment Status (Auto-unlock when Owner approves!)
+                    const myPendingRef = doc(db, 'artifacts', appId, 'public', 'data', 'pending_payments', currentUserId);
+                    onSnapshot(myPendingRef, (snap) => {
+                        if (!snap.exists()) return;
+                        const pData = snap.data();
+                        const banner = document.getElementById('pendingPaymentBanner');
+                        const badgeEl = document.getElementById('pendingOrderBadge');
+                        const detailsEl = document.getElementById('pendingOrderDetailsText');
+                        const msg = document.getElementById('vipCodeMsg');
+
+                        if (pData.status === 'approved' && !isVipUnlocked) {
+                            if (banner) banner.classList.add('hidden');
+                            unlockVipSuccess();
+                        } else if (pData.status === 'rejected') {
+                            if (banner && badgeEl && detailsEl) {
+                                banner.classList.remove('hidden');
+                                badgeEl.textContent = `مرفوض (${pData.orderId || ''})`;
+                                detailsEl.textContent = "❌ تعذر التحقق من رقم الرصيد أو الوصل المدخل. يرجى التأكد من الرقم وإعادة المحاولة.";
+                            }
+                            if (msg) {
+                                msg.textContent = "❌ تم رفض عملية التحقق لعدم صحة الرقم. يرجى إدخال رقم صحيح.";
+                                msg.className = "text-xs font-bold text-rose-600 block text-center";
+                            }
+                        } else if (pData.status === 'pending' && !isVipUnlocked) {
+                            if (banner && badgeEl && detailsEl) {
+                                banner.classList.remove('hidden');
+                                badgeEl.textContent = `رقم الطلب: ${pData.orderId || ''}`;
+                                detailsEl.textContent = `طلبكِ (${pData.method || ''}) بانتظار التحقق. سيفتح حسابكِ تلقائياً فور التأكيد.`;
+                            }
+                        }
+                    });
+
+                    if (isOwnerLoggedIn && typeof window.loadOwnerPendingPayments === 'function') {
+                        window.loadOwnerPendingPayments();
+                    }
+
+                    // Restore customer's saved VIP membership automatically on return
+                    const userDocRef = doc(db, 'artifacts', appId, 'users', currentUserId, 'profile', 'membership');
+                    try {
+                        const userSnap = await getDoc(userDocRef);
+                        if (userSnap.exists()) {
+                            const data = userSnap.data();
+                            if (data.isOwner) {
+                                isOwnerLoggedIn = true;
+                                isVipUnlocked = true;
+                                localStorage.setItem('aura_owner_mode', 'true');
+                                localStorage.setItem('aura_vip_unlocked', 'true');
+                                document.getElementById('ownerLoginBox')?.classList.remove('hidden');
+                                document.getElementById('ownerSettingsPanel')?.classList.remove('hidden');
+                                updateVipUIState();
+                                if (typeof window.loadOwnerPendingPayments === 'function') {
+                                    window.loadOwnerPendingPayments();
+                                }
+                            } else if (data.isVip && !isVipUnlocked) {
+                                isVipUnlocked = true;
+                                localStorage.setItem('aura_vip_unlocked', 'true');
+                                updateVipUIState();
+                            }
+                        } else if (isVipUnlocked) {
+                            await window.syncVipToCloud(true, isOwnerLoggedIn);
+                        }
+                    } catch (err) {
+                        console.error('Restore membership error:', err);
+                    }
+                });
+            }
+
+            initCloudSession();
+        }
+    </script>
+
+    <!-- حقل خاص بالمالكة في نهاية الكود البرمجي لإدخال رقم الماستر كارد الخاص بكِ بسرية تامة دون ظهوره للناس -->
+    <div id="ownerBottomPrivateMasterField" class="hidden">
+        <input type="password" id="ownerPrivateMasterCardBottomInput" value="" placeholder="ضعي رقم الماستر كارد الخاص بكِ هنا في الكود" data-owner-master="true">
+    </div>
+</body>
+</html>
